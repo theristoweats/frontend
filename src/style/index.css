@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #18191a;
+} 
+
+
+@font-face{ 
+    font-family: GilroyLight;
+    src: local("GilroyLight"),
+    url("../fonts/GilroyLight.ttf") format("truetype");
+}
+
+@font-face{ 
+    font-family: GilroyMedium;
+    src: local("GilroyMedium"),
+    url("../fonts/GilroyMedium.ttf") format("truetype");
+}
+
+.targetShownProducts{
+    background-color: #404040 !important;
+}
+
+.select-pro-bro{
+    
+    font-family: GilroyLight;
+    background: #242526;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    outline: none;  
+    width: 150px;
+    appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+    
+}  
+ 
+.select-pro-bro option{
+    font-family: GilroyLight;
+    height:20px;
+    outline: none;
+}
+
+
+.targetcho{
+    background-color: #e41e3f;
+}
+
+.pac-container{
+    border-top: none !important;
+    background-color: #242526 !important;
+    border-radius: 10px !important;
+ 
+}
+
+.pac-item{
+    /* border-top: none !important;  */
+    padding-top: 10px !important;
+    font-family: GilroyLight !important;
+    font-size: 14px !important;
+    padding-bottom: 10px !important;
+    color: #808080 !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    border-top: 1px solid #18191a !important;
+
+}
+.pac-item:hover{
+    background-color: #18191a;
+}
+
+.pac-item-query { 
+    color: white !important;
+    font-family: GilroyLight !important;
+}
+
+
+.address_for_delivery{
+    border-top:5px solid #e41e3f;
+    transition: .1s;
+}
+
+.gm-style-iw button{
+    display: none !important;
+}
+
