@@ -1,0 +1,13 @@
+export const CART_LIST_REQUEST = 'CART_LIST_REQUEST';
+export const CART_LIST_SUCCESS = 'CART_LIST_SUCCESS';
+export const CART_LIST_FAIL = 'CART_LIST_FAIL';
+
+export const CART_ADD_FAIL = "CART_ADD_FAIL";
+export const CART_ADD_REQUEST = "CART_ADD_REQUEST";
+export const CART_ADD_SUCCESS = "CART_ADD_SUCCESS"; 
+
+export const NEW_SESSION = "NEW_SESSION";
+
+
+export const CART_NEW_ITEM = "CART_NEW_ITEM";
+export const LOAD_ITEMS_NUM = "LOAD_ITEMS_NUM";

@@ -4,11 +4,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './fonts/GilroyLight.ttf';
 import './style/index.css';
+import {store, persistor} from "./redux/store";
+import {Provider} from "react-redux";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    {/* <PersistGate loading={null} persistor={persistor}> */}
+      <App />
+    {/* </PersistGate> */}
+  </Provider>,
   document.getElementById('root')
 );
 

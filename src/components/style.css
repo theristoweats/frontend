@@ -1,0 +1,43 @@
+.swiper-m{
+    width:auto;
+}
+
+.swiper-slide{
+    width: fit-content !important;
+}
+
+.pagination{
+    display:flex; 
+    border-radius: 10px;
+    margin-top: 30px;
+    background: #242526;
+    width: fit-content;
+    padding-left: 0px!important;
+}
+.page-item{
+    list-style: none; 
+    cursor: pointer;
+}
+.page-link{ 
+    list-style: none; 
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px; 
+    padding-left: 15px;
+    padding-right: 15px;
+    border-right: 1px solid #18191a;
+    outline: none;
+    cursor: pointer;
+}
+
+.active{
+    background-color: #353637;
+    border-right:unset;
+    /* border-radius: 10px; */
+}
+
+.next-item-d{
+    border-right: unset;
+}
