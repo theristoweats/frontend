@@ -9,6 +9,7 @@ import logo from "../icons/logo-red-2.png";
 import cartIcon from "../icons/shopping-cart.png";
 import loginIcon from "../icons/login.png";
 import userIcon from "../icons/user-white.png";
+import { useSelector } from "react-redux";
 
 const Container = styled.div` 
   display: flex; 
@@ -141,6 +142,9 @@ const CategoriesRow = styled.div`
 `; 
 
 const Navbar = () => {
+  const quantity = useSelector(state=>state.cart.quantity);
+
+
   return (
     <> 
      <Container>
@@ -158,7 +162,7 @@ const Navbar = () => {
                   <MyCart>
                     <MyCartImg src={cartIcon}></MyCartImg>
                     <CountCartItems>
-                      <CoutnerItems>10</CoutnerItems>
+                      <CoutnerItems>{quantity}</CoutnerItems>
                     </CountCartItems>
                   </MyCart>
                 </Link>
