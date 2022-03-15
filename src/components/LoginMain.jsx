@@ -4,10 +4,9 @@ import styled from "styled-components";
 import {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userActions"; 
-import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import SocialButton from "../actions/SocialButtons";
+// import SocialButton from "../actions/SocialButtons";
 
 const Container = styled.div` 
     display: flex;
@@ -252,7 +251,7 @@ const ErrorText = styled.span`
   font-size:15px;
 `;
 
-const HeroSection = ({setUsername, user, setUser, setLoadingUserData}) => {
+const HeroSection = () => {
   // const useCookies = useCookies();
   const navigate = useNavigate(); 
 
@@ -262,18 +261,18 @@ const HeroSection = ({setUsername, user, setUser, setLoadingUserData}) => {
   const { isFetching, error } = useSelector((state) => state.user);
   
   const handelClick = (e) => {
-    if(email && password) login(dispatch, {email, password}, navigate, setUser, setLoadingUserData, setUsername); 
+    if(email && password) login(dispatch, {email, password}, navigate); 
   }; 
 
-  // setUser("da");
-  // console.log(user);
-  const handleSocialLogin = (user) => {
-    console.log(user);
-  };
+  // // setUser("da");
+  // // console.log(user);
+  // const handleSocialLogin = (user) => {
+  //   console.log(user);
+  // };
 
-  const handleSocialLoginFailure = (err) => {
-    console.error(err);
-  };
+  // const handleSocialLoginFailure = (err) => {
+  //   console.error(err);
+  // };
 
 
   return (
@@ -285,14 +284,14 @@ const HeroSection = ({setUsername, user, setUser, setLoadingUserData}) => {
             <SingleText>Најава со социјалните мрежи</SingleText>
           </LeftMainTexts>
           <LoginWithSocialMedia>    
-          <SocialButton
+          {/* <SocialButton
             provider="facebook"
             appId="492231135730862"
             onLoginSuccess={handleSocialLogin}
             onLoginFailure={handleSocialLoginFailure}
           >
             Login with Facebook
-          </SocialButton>        
+          </SocialButton>         */}
             {/* <LoginWithFacebook style={{"marginRight":"10px"}}>
               <IconFB src="../icons/facebook-2.png" />
               Најава со Facebook
@@ -322,7 +321,6 @@ const HeroSection = ({setUsername, user, setUser, setLoadingUserData}) => {
             <NotMemberRegister>
               <NotMemberRegisterText>Сеуште не сте регистрирани?</NotMemberRegisterText>
               <Link to="/register" style={{textDecoration:"none", color:"white", marginLeft:"5px", fontWeight:"bold", fontFamily:"GilroyLight"}}>Регистрирај се</Link>
-
             </NotMemberRegister>
           </InputsProfileLogin>
         </LeftInside>

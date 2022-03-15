@@ -3,13 +3,9 @@
 import styled from "styled-components"; 
 import {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../actions/userActions"; 
-import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import validator from 'validator';
 import ArrowDown from "../icons/arrow-down.png";
-import { register } from "../actions/userActions"; 
 
 const Container = styled.div` 
     display: flex;
@@ -293,71 +289,7 @@ const IconInputErrorMessage = styled.img`
 
 
 const RegisterMain = ({setUsername, user, setUser, setLoadingUserData}) => {
-  // const useCookies = useCookies();
-  const navigate = useNavigate(); 
-
-  const [emailError, setEmailError] = useState(null);
-  const [passwordError, setPasswordError] = useState(false);
-  const [registerLoading, setRegisterLoading] = useState(false);
-  
-  const [fullname, setFullName] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
-  
-  const handelClick = (e) => {
-      if (!(fullname && fullname.length > 1)){
-        return false;
-      }
-
-      if (!(phoneNumber && phoneNumber.length > 1)){
-        return false;
-      }
- 
-      if (!(email && email.length > 1 && validator.isEmail(email))){
-        if(email.length > 1){
-          setEmailError("Не валидна е-мајл адреса.");
-        }
-        return false;
-      }
-
-      if (!(password && password.length >= 8)){
-          if(password.length > 1){
-            setPasswordError(true);
-          }
-          return false;
-      }
-      
-
-      register(dispatch, {fullname, email, password, phoneNumber}, navigate, setUser, setLoadingUserData, setEmailError, setRegisterLoading, setUsername);
-
-      
-
-
-    // if(email && password) login(dispatch, {email, password}, navigate, setUser, setLoadingUserData); 
-  }; 
-
-  const setEmailChange = (e) => {
-    setEmail(e.target.value);
-    if(emailError){
-      setEmailError(null);
-    } 
-  };
-
-  const setPasswordChange = (e) => {
-    setPassword(e.target.value);
-    if(passwordError){
-      setPasswordError(false);
-    }
-  };
-  
-
-  // setUser("da");
-  // console.log(user);
-
-
+        
   return (
     <LoginLoad>
       <Left>
@@ -386,32 +318,21 @@ const RegisterMain = ({setUsername, user, setUser, setLoadingUserData}) => {
             {error && <ErrorBox>
               <ErrorText>Погрешни податоци!</ErrorText>
             </ErrorBox>} */}
-            <Input type="text"  placeholder="Име и презиме" onChange={(e)=>setFullName(e.target.value)}/> 
-            <Input type="text"  placeholder="Телефонски број" onChange={(e)=>setPhoneNumber(e.target.value)}/> 
+            <Input type="text"  placeholder="Име и презиме"  /> 
+            <Input type="text"  placeholder="Телефонски број"  /> 
             <InputWithErrorMessage>
-              {emailError && <InputErrorMessage>
-                 <InputErrorMessageInside>
-                    <IconInputErrorMessage src={ArrowDown}/>
-                    <InputErrorMessageText>{emailError}</InputErrorMessageText>
-                 </InputErrorMessageInside>
-              </InputErrorMessage> }
+             
 
-              <Input type="email" placeholder="Е-мајл" onChange={(e)=>{setEmailChange(e)}}/>
+              <Input type="email" placeholder="Е-мајл"  />
             </InputWithErrorMessage>
 
             <InputWithErrorMessage>
-              {passwordError && <InputErrorMessage>
-                 <InputErrorMessageInside>
-                    <IconInputErrorMessage src={ArrowDown}/>
-                    <InputErrorMessageText>Кратка лозинка, мин. 8 букви.</InputErrorMessageText>
-                 </InputErrorMessageInside>
-              </InputErrorMessage> }
+       
 
-              <Input type="password" placeholder="Лозинка" onChange={(e)=>{setPasswordChange(e)}}/>
+              <Input type="password" placeholder="Лозинка"  />
             </InputWithErrorMessage>
 
-            {/* <Input type="text"  placeholder="Телефонски број" onChange={(e)=>setPhoneNumber(e.target.value)}/>  */}
-            <LoginButton onClick={handelClick} disabled={registerLoading}>Регистрирај се</LoginButton>
+            <LoginButton>Регистрирај се</LoginButton>
             <NotMemberRegister>
               <NotMemberRegisterText>Веќе сте регистрирани?</NotMemberRegisterText>
               <Link to="/login" style={{textDecoration:"none", color:"white", marginLeft:"5px", fontWeight:"bold", fontFamily:"GilroyLight"}}>Најви се</Link>

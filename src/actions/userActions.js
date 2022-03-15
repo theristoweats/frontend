@@ -2,23 +2,19 @@ import { publicRequest, userRequest } from "../requestMethods";
 import { loginFailure, loginStart, loginSuccess } from "../redux/userRedux";
 import axios from "axios"; 
 
-export const login = async (dispatch, user, navigate, setUser, setLoadingUserData, setUsername) => {    
-    setLoadingUserData(true);
-    // dispatch(loginStart());
-    try {
-        const res = await publicRequest.post("/auth/login", user); 
-        console.log(res.data);
-        localStorage.setItem('user', JSON.stringify(res.data));
-        navigate("/");
-        setUser(res.data);
-        setLoadingUserData(false);
-        // return res.data.accessToken;
-        dispatch(loginSuccess(res));
-        setUsername(res.data.others.fullname);
-    } catch (err) {
-      dispatch(loginFailure()); 
-      setLoadingUserData(false);
-    }
+export const login = async (dispatch, user, navigate) => {    
+  dispatch(loginStart());
+  console.log("HIIIIIIII");
+  try {
+      const res = await publicRequest.post("/auth/login", user); 
+      console.log(res.data);
+      localStorage.setItem('user', JSON.stringify(res.data));
+      navigate("/");
+      dispatch(loginSuccess(JSON.stringify(res.data)));
+  } catch (err) {
+  console.log(err);
+  dispatch(loginFailure()); 
+  }
 };
 
 export const userCheck = async (userData, setUsername, setUser, setLoadingUserData) => {

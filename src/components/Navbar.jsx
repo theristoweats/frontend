@@ -141,10 +141,10 @@ const CategoriesRow = styled.div`
   display:flex;
 `; 
 
-const Navbar = () => {
+const Navbar = ({user}) => {
+  // const { currentUser, isFetching, error } = useSelector((state) => state.user);
   const quantity = useSelector(state=>state.cart.quantity);
-
-
+  console.log(user);
   return (
     <> 
      <Container>
@@ -167,12 +167,27 @@ const Navbar = () => {
                   </MyCart>
                 </Link>
               </MyCartContainer>
+              {/* <Link to="/login" style={{"textDecoration":"none"}}>
+                <LoginContainer>
+                  <LoginBtnText>Најави се</LoginBtnText>
+                  <LoginIcon src={loginIcon}></LoginIcon>
+                </LoginContainer>
+              </Link> */}
+              { user ? (<>
+                <Link to="/dashboard" style={{"textDecoration":"none"}}>
+                  <LoginContainer>
+                    <LoginBtnText>{JSON.parse(user).others.fullname}</LoginBtnText>
+                    <LoginIcon src={userIcon}></LoginIcon> 
+                  </LoginContainer>
+                </Link>
+              </>) : (<>
               <Link to="/login" style={{"textDecoration":"none"}}>
                 <LoginContainer>
                   <LoginBtnText>Најави се</LoginBtnText>
                   <LoginIcon src={loginIcon}></LoginIcon>
                 </LoginContainer>
               </Link>
+              </>)}
               
           </Header>
        </Wrapper>

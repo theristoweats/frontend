@@ -2,15 +2,20 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import ProductResearch from "./pages/ProductResearch";
 import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import { BrowserRouter, Link, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from "./components/Footer";
 import { useCookies } from "react-cookie";
 import uuid from 'react-uuid';
 import { listCartItems } from "./actions/cartActions";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { loginFailure, loginStart, loginSuccess } from "./redux/userRedux";
 
 function App() {
+  const { currentUser, isFetching, error } = useSelector((state) => state.user);
+   
   const dispatch = useDispatch();
 
   const [cookies, setCookie, removeCookie] = useCookies();
@@ -29,12 +34,32 @@ function App() {
             user_UUID:cookies.userUUID
         })
     );  
-  }, []);  
+  }, []);
+  const userData = localStorage.getItem("user");
+
+
+  useEffect(() => {
+    
+    if(userData){
+      dispatch(loginStart());
+      dispatch(loginSuccess(userData));
+      // console.log("DATAAAAAAAAAAAAAAAAAAAAAAAA  --------  " + userData)
+    }
+  }, [dispatch]);
+
+
+  
+  console.log("CURRENT USER: :: : : _ _ _ _ _ _ _--- - - - -  - - -    "+ currentUser)
+  
+   
+
 
   return ( 
     <>
     <BrowserRouter>
-      <Navbar />
+    {isFetching !==true &&
+    <>
+      <Navbar user={currentUser}/>
 
       <Routes>
         <Route
@@ -44,7 +69,7 @@ function App() {
         ></Route>
         <Route
           path="/cart"
-          element={<Cart user={user}/>}
+          element={<Cart user={currentUser}/>}
         ></Route> 
         <Route
           path="/products/category/:category"
@@ -55,8 +80,24 @@ function App() {
           element={<ProductResearch />}
           exact
         ></Route>
+        {/* <Route
+          path="/login"
+          element={<Login />} 
+        ></Route> */}
+        <Route
+          path="/register"
+          element={<Register />} 
+        ></Route>
+
+        
+        <Route path="/login" element={
+          currentUser ? <Navigate to="/dashboard" /> : <Login />
+          }></Route> 
+
       </Routes>
       <Footer />
+        </>
+        }
 
     </BrowserRouter>
     </>

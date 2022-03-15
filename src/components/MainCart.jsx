@@ -329,6 +329,8 @@ const TextLoad= styled.span`
 
 
 const MainCart = ({user}) => { 
+    // const { currentUser, isFetching } = useSelector((state) => state.user);
+
     const navigate = useNavigate(); 
 
 
