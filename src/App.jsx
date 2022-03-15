@@ -99,6 +99,11 @@ function App() {
           path="/dashboard"
           element={currentUser ?  <Dashboard user={currentUser} page={"dashboard"} /> : <Navigate to="/" />}> 
         </Route> 
+        
+        <Route
+          path="/dashboard/orders"
+          element={currentUser ?  <Dashboard user={currentUser} page={"orders"}/> : <Navigate to="/" />}> 
+        </Route>
 
       </Routes>
       <Footer />
