@@ -12,6 +12,7 @@ import { listCartItems } from "./actions/cartActions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "./redux/userRedux";
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   const { currentUser, isFetching, error } = useSelector((state) => state.user);
@@ -93,6 +94,11 @@ function App() {
         <Route path="/login" element={
           currentUser ? <Navigate to="/dashboard" /> : <Login />
           }></Route> 
+          
+        <Route
+          path="/dashboard"
+          element={currentUser ?  <Dashboard user={currentUser} page={"dashboard"} /> : <Navigate to="/" />}> 
+        </Route> 
 
       </Routes>
       <Footer />
