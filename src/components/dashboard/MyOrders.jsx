@@ -141,7 +141,7 @@ const SingleOrder = styled.div`
     width:100%;
 `;
 
-const socket = io.connect("https://apieats.theristow.com/");
+const socket = io.connect("http://apieats.theristow.com/");
 
 const MyOrders = () =>{
 
