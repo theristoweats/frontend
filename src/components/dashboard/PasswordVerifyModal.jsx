@@ -112,9 +112,20 @@ const Input = styled.input`
   background-color:#242424;
 `;
 
-const PasswordVerifyModal = ({setNewPassword, setVerifyOldPassword, setVerifiedPassword}) =>{ 
+const ErrorPw = styled.div`
+  margin-top:20px
+`;  
 
-    const [oldPassword, setOldPassword] = useState();
+const ErrorPwInside = styled.span`
+  color: #ff4d6a;
+  font-size: 14px;
+  font-family: GilroyLight;
+`;
+
+const PasswordVerifyModal = ({setNewPassword, setVerifyOldPassword, setVerifiedPassword}) =>{ 
+    const [errorPwWrong, setErrorPw] = useState(false);
+
+    const [oldPassword, setOldPasswordPro] = useState();
 
     const handleCancel = (e) => {
       e.preventDefault();
@@ -126,8 +137,13 @@ const PasswordVerifyModal = ({setNewPassword, setVerifyOldPassword, setVerifiedP
     const handleVerify = (e) => {
         e.preventDefault();
         if(oldPassword && oldPassword.length > 8){
-            oldPasswordVerify(userData, setVerifiedPassword, oldPassword, setVerifyOldPassword);
+            oldPasswordVerify(userData, setVerifiedPassword, setErrorPw, oldPassword, setVerifyOldPassword);
         }
+    }
+
+    const setOldPassword = (oldpw) => {
+      setOldPasswordPro(oldpw);
+      setErrorPw(false);
     }
 
     return (
@@ -139,10 +155,12 @@ const PasswordVerifyModal = ({setNewPassword, setVerifyOldPassword, setVerifiedP
                          
                           <MainTextModal>Потврди лозинка</MainTextModal>
                           <SecoundText>За да ја промените вашата лозинка потребно е да ја потврдите старата.</SecoundText>   
-                          
+                          {errorPwWrong && <ErrorPw>
+                            <ErrorPwInside>Погрешна лозинка!</ErrorPwInside>
+                          </ErrorPw>}
                           <InputAddresses style={{marginTop:"25px"}}>
                             <InputText>Стара лозинка</InputText>
-                            <Input type="password" placeholder="*******" onChange={(e)=>setOldPassword(e.target.value)}/>
+                            <Input className={errorPwWrong ? "wrongPw": ""} type="password" placeholder="*******" onChange={(e)=>setOldPassword(e.target.value)}/>
                           </InputAddresses>
  
 

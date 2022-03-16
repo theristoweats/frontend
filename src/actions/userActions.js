@@ -78,6 +78,7 @@ export const updateProfile = async (dispatch, userData, newFullname, newPhonenum
       const userId = JSON.parse(userData).others._id;
       console.log(userId);
       const res = await axios.put(
+        // "http://apieats.theristow.com/api/user/"+userId,
         "http://apieats.theristow.com/api/user/"+userId,
         {newFullname, newPhonenumber, newPassword},
         {headers: { token: `Bearer ${TOKEN}` }},
@@ -92,7 +93,7 @@ export const updateProfile = async (dispatch, userData, newFullname, newPhonenum
 };
 
 
-export const oldPasswordVerify = async (userData, setVerifiedPassword, oldPassword, setVerifyOldPassword) => {    
+export const oldPasswordVerify = async (userData, setVerifiedPassword, setErrorPw, oldPassword, setVerifyOldPassword) => {    
   const TOKEN = JSON.parse(userData).accessToken;
   console.log(TOKEN);
   try {
@@ -109,6 +110,7 @@ export const oldPasswordVerify = async (userData, setVerifiedPassword, oldPasswo
   } catch (err) {
     console.log(err); 
     setVerifiedPassword(false);
+    setErrorPw(true);
   }
 };
 

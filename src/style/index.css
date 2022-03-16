@@ -94,3 +94,7 @@ body{
     display: none !important;
 }
 
+
+.wrongPw{
+    border:1px solid #e41e3f !important;
+}
