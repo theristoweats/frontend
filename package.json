@@ -23,7 +23,6 @@
     "swiper": "^8.0.7",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "http://apieats.theristow.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "set \"GENERATE_SOURCEMAP=false\" &&  react-scripts build",
