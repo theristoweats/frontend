@@ -111,6 +111,18 @@ function App() {
           element={currentUser ?  <Dashboard user={currentUser} page={"orders_order"}/> : <Navigate to="/" />}> 
         </Route>
 
+        
+        <Route
+          path="/dashboard/addresses"
+          element={currentUser ?  <Dashboard user={currentUser} page={"addresses"}/> : <Navigate to="/" />}> 
+        </Route>
+
+        
+        <Route
+          path="/dashboard/profile"
+          element={currentUser ?  <Dashboard user={currentUser} page={"profile"} /> : <Navigate to="/" />}> 
+        </Route>
+
       </Routes>
       <Footer />
         </>
