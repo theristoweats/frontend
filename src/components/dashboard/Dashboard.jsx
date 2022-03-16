@@ -18,7 +18,7 @@ const DashboardRight = styled.div`
     width: 100%;
     margin-left: 250px;
 `;
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("http://apieats.theristow.com/");
 
 const Dashboard = ({setUsername, setUser, setLoadingUserData, user, page}) =>{
 
