@@ -66,7 +66,7 @@ export const register = async (dispatch, user, navigate, setUser, setLoadingUser
 };
 
 
-export const updateProfile = async (userData, newFullname, newPhonenumber, newPassword, setUsername) => {    
+export const updateProfile = async (dispatch, userData, newFullname, newPhonenumber, newPassword, setUsername) => {    
   console.log(newFullname);
   console.log(newPhonenumber);
   console.log(newPassword);
@@ -83,8 +83,9 @@ export const updateProfile = async (userData, newFullname, newPhonenumber, newPa
         {headers: { token: `Bearer ${TOKEN}` }},
       );
       localStorage.setItem('user', JSON.stringify(res.data));
+      dispatch(loginSuccess(JSON.stringify(res.data)));
       console.log(res);
-      setUsername(res.data.others.fullname);
+      // setUsername(res.data.others.fullname);
   } catch (err) {  
     console.log(err);
   }

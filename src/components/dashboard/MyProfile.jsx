@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { updateProfile } from "../../actions/userActions";
 import PasswordVerifyModal from "./PasswordVerifyModal";
 import VerifyPhoneNumberModal from "./VerifyPhoneNumberModal";
+import { useDispatch, useSelector } from "react-redux";
 
 const MainWrapper = styled.div``;
 
@@ -97,12 +98,15 @@ const ButtonSaveChanges = styled.button`
 `;
 
 const MyProfile = ({setUsername}) =>{
+    const dispatch = useDispatch();
+
+    const { currentUser, isFetching, error } = useSelector((state) => state.user);
 
     const [verifiedPassword, setVerifiedPassword] = useState(false);
     const [verifyOldPassword, setVerifyOldPassword] = useState(false);
     const [verifyPhoneNumber, setVerifyPhoneNumber] = useState(false);
     
-    const userData = localStorage.getItem("user"); 
+    const userData = currentUser; 
     const userId = JSON.parse(userData).others._id;
     const fullname = JSON.parse(userData).others.fullname;
     const email = JSON.parse(userData).others.email;
@@ -124,11 +128,11 @@ const MyProfile = ({setUsername}) =>{
         } 
 
         if(newFullname && newFullname.length > 0){
-            updateProfile(userData, newFullname, phonenumber, pw, setUsername, setVerifiedPassword);
+            updateProfile(dispatch, userData, newFullname, phonenumber, pw, setUsername, setVerifiedPassword);
         }
 
         if(newPhonenumber && newPhonenumber.length > 8){
-            updateProfile(userData, newFullname, phonenumber, pw, setUsername, setVerifiedPassword);
+            updateProfile(dispatch, userData, newFullname, phonenumber, pw, setUsername, setVerifiedPassword);
         }
 
         // if(phonenumber.length > 8){
@@ -146,7 +150,7 @@ const MyProfile = ({setUsername}) =>{
             var phonenumber = document.getElementById("phoneNumber").value;
             var pw = document.getElementById("passwordM").value;
             console.log(pw);
-            updateProfile(userData, newFullname, phonenumber, pw, setUsername, setVerifiedPassword);
+            updateProfile(dispatch, userData, newFullname, phonenumber, pw, setUsername, setVerifiedPassword);
             pw = '';
         }      
     }, [verifiedPassword]);
