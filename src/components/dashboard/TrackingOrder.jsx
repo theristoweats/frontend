@@ -300,7 +300,7 @@ const TrackingOrder = ({socket}) => {
               try {
                 const TOKEN = JSON.parse(userData).accessToken;
                 const carrierDetails = await axios.get(
-                    "http://localhost:5000/api/carriers/details/"+carrierId,
+                    "http://apieats.theristow.com/api/carriers/details/"+carrierId,
                     {headers: { token: `Bearer ${TOKEN}` }},
                 );
                 var carrierDetails_Data = carrierDetails.data.fullname+" - "+carrierDetails.data.phoneNumber;
