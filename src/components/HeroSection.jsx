@@ -25,7 +25,7 @@ const HeroInside = styled.div`
     padding-top: 30px;
     border-radius: 10px;
     margin-top: 70px;
-    ${mobile({ paddingLeft: "0px" })}
+    ${mobile({ paddingLeft: "0px", paddingTop:"20px", paddingBottom:"20px" })}
 
 `;
 
@@ -52,7 +52,7 @@ const MainText = styled.h1`
     font-size: 50px;
     font-family: GilroyMedium;
     ${desktop1({ fontSize: "35px" })}
-    ${mobile({ fontSize: "20px" })}
+    ${mobile({ fontSize: "23px" })}
 `;
 
 const SimpleText = styled.p` 
@@ -71,7 +71,7 @@ const SearchBar = styled.div`
     width: 550px;
     position: relative;
     ${desktop1({ width: "450px" })}
-    ${mobile({ width: "100%" })}
+    ${mobile({ width: "100%", marginTop:"15px"})}
 
 `;
 
