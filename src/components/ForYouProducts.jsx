@@ -2,6 +2,8 @@
 // import { useState } from "react";
 import styled from "styled-components"; 
 import { ProductsLoad } from "../data";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
  
 
 const Container = styled.div`
@@ -147,8 +149,14 @@ const ForYouProducts = () => {
                     <Right href="#">Погледни ги сите</Right>
                 </MainTexts>
                 <Products>
+                <Swiper
+
+                    slidesPerView={"auto"}
+                    onSlideChange={() => console.log('slide change')}
+                    > 
 
                     {ProductsLoad.map((item) => (
+                        <SwiperSlide style={{width:"fit-content"}}>
                         <Product item={item} key={item.id}>
                             <Main>
                                 <Image src={item.img}></Image>
@@ -166,7 +174,10 @@ const ForYouProducts = () => {
                                 </InfoWrapper>
                             </Info>
                         </Product>
+                        </SwiperSlide>
                     ))} 
+
+                </Swiper>
                     
                 </Products>
             </ProductsList>

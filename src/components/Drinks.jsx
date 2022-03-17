@@ -2,7 +2,8 @@
 // import { useState } from "react";
 import styled from "styled-components"; 
 import { ProductsLoad } from "../data";
- 
+ import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const Container = styled.div`
     display: flex;
@@ -183,7 +184,7 @@ const Drinks = () => {
                     </Left>
                     <Right href="#">Погледни ги сите</Right>
                 </MainTexts>
-                <DrinksCategory>
+                {/* <DrinksCategory>
                     <DrinksCategoryMain>
                         <SingleDrinksCategory>
                             <DrinksCategoryName>Безалкохолни</DrinksCategoryName>
@@ -204,10 +205,18 @@ const Drinks = () => {
                     <BarDrinksCategory>
                         <ProgressBarDrinksCategory></ProgressBarDrinksCategory>
                     </BarDrinksCategory>
-                </DrinksCategory>
+                </DrinksCategory> */}
                 <Products>
+                    
+                <Swiper
+
+                slidesPerView={"auto"}
+                onSlideChange={() => console.log('slide change')}
+                > 
 
                     {ProductsLoad.map((item) => (
+                        <SwiperSlide style={{width:"fit-content"}}>
+
                         <Product item={item} key={item.id}>
                             <Main>
                                 <Image src={item.img}></Image>
@@ -225,7 +234,11 @@ const Drinks = () => {
                                 </InfoWrapper>
                             </Info>
                         </Product>
+
+                        </SwiperSlide>
                     ))} 
+                
+                </Swiper>
                     
                 </Products>
             </ProductsList>

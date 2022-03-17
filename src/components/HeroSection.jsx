@@ -2,6 +2,7 @@
 // import { useState } from "react";
 import styled from "styled-components"; 
 import shoppingcart from "../icons/shoppingcart.png";
+import { mobile, desktop1 } from "../responsive";
 
 const Container = styled.div` 
     display: flex;
@@ -23,11 +24,13 @@ const HeroInside = styled.div`
     padding-top: 30px;
     border-radius: 10px;
     margin-top: 70px;
+    ${mobile({ paddingLeft: "0px" })}
 
 `;
 
 const Left = styled.div`
     width:50%;
+    ${mobile({ width: "100%", paddingLeft:"30px", paddingRight:"30px" })}
 `;
 
 
@@ -36,6 +39,8 @@ const Right = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    ${mobile({ display: "none" })}
+
 `;
 
 const Texts = styled.div`
@@ -45,6 +50,8 @@ const MainText = styled.h1`
     color: white;
     font-size: 50px;
     font-family: GilroyMedium;
+    ${desktop1({ fontSize: "35px" })}
+    ${mobile({ fontSize: "20px" })}
 `;
 
 const SimpleText = styled.p` 
@@ -52,6 +59,7 @@ const SimpleText = styled.p`
     font-size: 14px;
     margin-top: 20px;
     font-family: GilroyLight;
+    ${mobile({ display: "none" })}
 `;
 
 const SearchBar = styled.div`  
@@ -61,6 +69,9 @@ const SearchBar = styled.div`
     margin-top:25px;
     width: 550px;
     position: relative;
+    ${desktop1({ width: "450px" })}
+    ${mobile({ width: "100%" })}
+
 `;
 
 const Input = styled.input`
@@ -87,6 +98,10 @@ const Input = styled.input`
         color: #b3b3b3;
         opacity: 1;
     }
+
+    ${desktop1({ width: "450px", paddingRight:"148px" })}
+    ${mobile({ width: "100%" })}
+
 `;
 
 const SearchIcon = styled.img` 
@@ -128,6 +143,9 @@ const CartImg = styled.img`
     width: 350px;
     height: 350px;
     object-fit: contain;
+    ${desktop1({ width: "300px", height:"300px" })}
+    ${mobile({ display: "none" })}
+
 `;
 
 const HeroSection = () => {

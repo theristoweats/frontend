@@ -8,6 +8,8 @@
 //     Twitter,
 // } from "@material-ui/icons";
 import styled from "styled-components";
+import { mobile, desktop1 } from "../responsive";
+
 // import { mobile } from "../responsive";
  
 const Container = styled.div`
@@ -50,6 +52,8 @@ const FirstFooterLinks = styled.div`
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
+    ${mobile({ flexDirection: "column" })}
+    
 `;
 
 const FooterLink = styled.div`

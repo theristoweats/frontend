@@ -1,6 +1,8 @@
 // import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 // import { useState } from "react";
 import styled from "styled-components"; 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import { ProductsLoad } from "../data";
 // import ProductModal from "../componentes/ProductModal";
  
@@ -148,8 +150,15 @@ const PopularProducts = () => {
                     <Right href="#">Погледни ги сите</Right>
                 </MainTexts>
                 <Products>
+                <Swiper
+
+                slidesPerView={"auto"}
+                onSlideChange={() => console.log('slide change')}
+                > 
 
                     {ProductsLoad.map((item) => (
+                        <SwiperSlide style={{width:"fit-content"}}>
+                        
                         <Product item={item} key={item.id}>
                             <Main>
                                 <Image src={item.img}></Image>
@@ -167,7 +176,9 @@ const PopularProducts = () => {
                                 </InfoWrapper>
                             </Info>
                         </Product>
+                        </SwiperSlide>
                     ))} 
+                </Swiper>
                     
                 </Products>
             </ProductsList>

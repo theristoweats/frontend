@@ -47,7 +47,6 @@ const Categories = () => {
 
       slidesPerView={"auto"}
       onSlideChange={() => console.log('slide change')}
-      // onSwiper={(swiper) => console.log(swiper)}
     > 
       {cat.map((item) => (
         <SwiperSlide style={{width:"fit-content"}}>
