@@ -10,6 +10,7 @@ import cartIcon from "../icons/shopping-cart.png";
 import loginIcon from "../icons/login.png";
 import userIcon from "../icons/user-white.png";
 import { useSelector } from "react-redux";
+import { mobile, desktop1 } from "../responsive";
 
 const Container = styled.div` 
   display: flex; 
@@ -109,18 +110,23 @@ const LoginContainer = styled.div`
   padding-right: 20px;
   border-radius: 20px;
   justify-content: center;
+  ${mobile({ paddingLeft: "15px", paddingRight:"15px", marginLeft:"10px" })}
+
 `;
 
 const LoginBtnText = styled.span`
   font-size: 14px;
   color: white;
   font-family: "GilroyLight";
+  ${mobile({ display: "none" })}
 `;
 
 const LoginIcon = styled.img` 
   width: 15px;
   height: 15px;
   margin-left: 5px; 
+  ${mobile({ marginLeft:"0px" })}
+
 `;
 
 
