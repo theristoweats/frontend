@@ -141,9 +141,10 @@ const SingleOrder = styled.div`
     width:100%;
 `;
 
-const socket = io.connect("http://apieats.theristow.com/");
+// const socket = io.connect("http://localhost:5000/");
 
-const MyOrders = () =>{
+
+const MyOrders = ({socket}) =>{
 
     const [allOrders, setAllOrders] = useState();
     const [fetching, fetchingStart] = useState();

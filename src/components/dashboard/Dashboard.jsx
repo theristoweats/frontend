@@ -20,11 +20,12 @@ const DashboardRight = styled.div`
 `;
 const socket = io.connect("http://apieats.theristow.com/");
 
+
 const Dashboard = ({setUsername, setUser, setLoadingUserData, user, page}) =>{
 
     // console.log("NEW PAGE");
     useEffect(() => { 
-        // socket.disconnect(); 
+        // socket.disconnect();  
         // socket.connect(); 
         // socket?.emit("disc");
         console.log("DASHB");
