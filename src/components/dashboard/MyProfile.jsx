@@ -1,11 +1,12 @@
 import styled from "styled-components";  
 import "./style.css";
-import MyProfileIcon from "../../icons/address.png";
+import MyProfileIcon from "../../icons/user-white.png";
 import { useEffect, useState } from "react";
 import { updateProfile } from "../../actions/userActions";
 import PasswordVerifyModal from "./PasswordVerifyModal";
-import VerifyPhoneNumberModal from "./VerifyPhoneNumberModal";
+// import VerifyPhoneNumberModal from "./VerifyPhoneNumberModal";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 const MainWrapper = styled.div``;
 
@@ -97,7 +98,27 @@ const ButtonSaveChanges = styled.button`
     cursor:pointer;
 `;
 
+const PhoneNumberNotVerifyed = styled.div`
+    margin-bottom:20px;
+`;
+
+const PhoneNumberNotVerifyedText = styled.span`
+    font-family: GilroyLight;
+    color:white;
+    font-size:14px;
+`;
+
+const VerifyNow = styled.a`
+    text-decoration:none;
+    font-weight:bold;
+    color:#ff2d50;
+`;
+
 const MyProfile = ({setUsername}) =>{
+    const [] = useState();
+
+    // const [phoneNotVerified, setPhoneNotVerified] = useState();
+
     const dispatch = useDispatch();
 
     const { currentUser, isFetching, error } = useSelector((state) => state.user);
@@ -155,6 +176,32 @@ const MyProfile = ({setUsername}) =>{
         }      
     }, [verifiedPassword]);
 
+    
+    // useEffect(() => { 
+    //     const checkPhoneNumber = async () =>{
+    //         try{
+    //             // 
+    //             const TOKEN = JSON.parse(userData).accessToken;
+    //             const res = await axios.post(
+    //                 "http://localhost:5000/api/auth/checknumber", {userId},
+    //                 {headers: { token: `Bearer ${TOKEN}` }},
+    //             ); 
+    //             if(res.data === "not_verified"){
+    //                 setPhoneNotVerified(true);
+    //             }
+    //         }catch(err){
+
+    //         }
+    //     }
+    //     checkPhoneNumber();
+    // }, []);
+
+    const handleVerifyPhonenumber = (e) => {
+        e.preventDefault();
+        setVerifyPhoneNumber(true);
+    }
+ 
+
     return(
     <> 
         <MainWrapper>
@@ -194,6 +241,10 @@ const MyProfile = ({setUsername}) =>{
                         </InputMain>
                     </InputBox>
 
+{/* 
+                    {phoneNotVerified && phonenumber !== "0" && <PhoneNumberNotVerifyed>
+                        <PhoneNumberNotVerifyedText>Телефонскиот број не е потврден. <VerifyNow href="#" onClick={(e)=>handleVerifyPhonenumber(e)}>Потврди сега</VerifyNow></PhoneNumberNotVerifyedText>
+                    </PhoneNumberNotVerifyed>} */} 
                     
                     <InputBox>
                         <InputBoxText>Лозинка</InputBoxText>
@@ -213,7 +264,7 @@ const MyProfile = ({setUsername}) =>{
 
         {verifyOldPassword && <PasswordVerifyModal setNewPassword={setNewPassword} setVerifyOldPassword={setVerifyOldPassword} setVerifiedPassword={setVerifiedPassword}/> }
        
-        {/* {verifyPhoneNumber && <VerifyPhoneNumberModal setVerifyPhoneNumber={setVerifyPhoneNumber} /> } */}
+        {/* {verifyPhoneNumber && <VerifyPhoneNumberModal setVerifyPhoneNumber={setVerifyPhoneNumber} userId={userId} userData={userData} /> } */}
     
         
     

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styled from "styled-components";  
 import { oldPasswordVerify } from "../../actions/userActions";
 
@@ -112,16 +113,41 @@ const Input = styled.input`
   background-color:#242424;
 `;
 
-const VerifyPhoneNumberModal = ({setVerifyPhoneNumber}) =>{ 
+const VerifyPhoneNumberModal = ({setVerifyPhoneNumber, userId, userData}) =>{ 
 
-    const [oldPassword, setOldPassword] = useState();
+    const [canVerify, setCanVerify] = useState();
+    useEffect(() => { 
+      const sendCodeCheckVerify = async () =>{
+          try{
+              // 
+              const TOKEN = JSON.parse(userData).accessToken;
+              const res = await axios.post(
+                  "http://localhost:5000/api/auth/sendcodecheck", {userId},
+                  {headers: { token: `Bearer ${TOKEN}` }},
+              ); 
+              if(res.data === "can"){
+                setCanVerify(true);
+              }else if(res.data === "not"){
+                setCanVerify(false);
+              }
+              // if(res.data === "not_verified"){
+              //     setPhoneNotVerified(true);
+              // }
+          }catch(err){
+
+          }
+      }
+      sendCodeCheckVerify();
+    }, []);
+
+    const [phoneNumberNew, setNewPhoneNumber] = useState();
+    const [codeVerify, setCodeVerify] = useState();
 
     const handleCancel = (e) => {
       e.preventDefault();
     //   setNewPassword(null);
         setVerifyPhoneNumber(false);
     }
-    const userData = localStorage.getItem("user"); 
 
     const handleVerify = (e) => {
         e.preventDefault();
@@ -138,11 +164,16 @@ const VerifyPhoneNumberModal = ({setVerifyPhoneNumber}) =>{
                       <LeftModalInside>
                          
                           <MainTextModal>Потврда на телефонски број</MainTextModal>
+                          {canVerify === true ? (<>
                           <SecoundText>На вашиот број ќе ви стигне СМС порака со код кој што треба да го внесете подоле.</SecoundText>   
                           
+                          {/* <InputAddresses style={{marginTop:"25px"}}>
+                            <InputText>Телефонски број</InputText>
+                            <Input type="text" placeholder="070000000" onChange={(e)=>setNewPhoneNumber(e.target.value)}/>
+                          </InputAddresses> */}
                           <InputAddresses style={{marginTop:"25px"}}>
-                            <InputText>Стара лозинка</InputText>
-                            <Input type="password" placeholder="*******" onChange={(e)=>setOldPassword(e.target.value)}/>
+                            <InputText>Код</InputText>
+                            <Input type="text" placeholder="XXXXXX" onChange={(e)=>setCodeVerify(e.target.value)}/>
                           </InputAddresses>
  
 
@@ -162,6 +193,21 @@ const VerifyPhoneNumberModal = ({setVerifyPhoneNumber}) =>{
                                   </ButtonLink>
                               </SingleButton>
                           </ButtonsLoadHere>
+                          </>) : (<>
+                          <SecoundText>Мора да почекате 2-3 минути за да можете повторно да правите промени на вашиот профил, односно да испратите повторно порака.</SecoundText>   
+                            
+                          <ButtonsLoadHere> 
+                              <SingleButton>
+                                  <ButtonLink href="#" onClick={(e)=>{handleCancel(e)}}>
+                                      <SingleButtonInside>
+                                          <TextMainY>Во ред</TextMainY>
+                                      </SingleButtonInside>
+                                  </ButtonLink>
+                              </SingleButton>
+                          </ButtonsLoadHere>
+                          
+                          </>)}
+
                         </LeftModalInside>
                     </LeftModal> 
                 </InsideModalAskPro>

@@ -565,19 +565,27 @@ const MainCart = ({user}) => {
                                         <ButtonPlaceOrder disabled={true}>Нарачај сега</ButtonPlaceOrder>
                                         <TextErrorOrderButton>За да нарачате мора да изберете адреса.</TextErrorOrderButton>
                                     </>
+                                    
                                 ) :(
-                                    placingOrder === true ? (
+                                    JSON.parse(user).others.phonenumber === "0" ? (
                                         <>
-                                            <ButtonPlaceOrder>
-                                                <LoadingInButton />
-                                            </ButtonPlaceOrder>
+                                            <ButtonPlaceOrder disabled={true}>Нарачај сега</ButtonPlaceOrder>
+                                            <TextErrorOrderButton>За да нарачате мора да внесете телефонски број. <Link to="/dashboard/profile" style={{color:"#4f95f3", textDecoration:"none", fontFamily:"GilroyLight"}}>Внеси број</Link></TextErrorOrderButton>
                                         </>
                                     ) :(
-                                        <>
-                                            <ButtonPlaceOrder onClick={()=> handlePlaceOrder()}>
-                                                Нарачај сега
-                                            </ButtonPlaceOrder>
-                                        </>
+                                        placingOrder === true ? (
+                                            <>
+                                                <ButtonPlaceOrder>
+                                                    <LoadingInButton />
+                                                </ButtonPlaceOrder>
+                                            </>
+                                        ) :(
+                                            <>
+                                                <ButtonPlaceOrder onClick={()=> handlePlaceOrder()}>
+                                                    Нарачај сега
+                                                </ButtonPlaceOrder>
+                                            </>
+                                        )
                                     )
                                 )
                             )
