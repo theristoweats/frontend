@@ -7,6 +7,8 @@ import SavedMealsIcon from "../../icons/heart-full-white.png";
 import MyNetworkIcon from "../../icons/my-network-white.png";
 import ProfileIcon from "../../icons/user-white.png";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../redux/userRedux";
 
 
 const LeftMenuMain = styled.div`
@@ -124,6 +126,7 @@ const TextMainY  = styled.span`
 const DashboardLeftMenu = ({setUsername, page, setUser, setLoadingUserData}) =>{
 
     const [LogoutModal, setLogOutModal] = useState(false);
+    const dispatch = useDispatch();
 
     const logoutHandle = (e) =>{
         setLogOutModal(true);
@@ -137,11 +140,11 @@ const DashboardLeftMenu = ({setUsername, page, setUser, setLoadingUserData}) =>{
 
     const handleLogoutYes = (e) =>{
         e.preventDefault();
+        dispatch(logOut());
         
         localStorage.removeItem("user");
-        setUser(null);  
         setLoadingUserData(false);
-        setUsername(null);
+        // dispatch(loginStart());
     };
 
     return(

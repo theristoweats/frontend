@@ -45,8 +45,10 @@ export const register = async (dispatch, user, navigate, setUser, setLoadingUser
       // setRegisterLoading(false);
       localStorage.setItem('user', JSON.stringify(res.data));
       navigate("/");
-      setUser(res.data);
-      setUsername(res.data.others.fullname);
+      dispatch(loginStart());
+      dispatch(loginSuccess(JSON.stringify(res.data)));
+      // setUser(res.data);
+      // setUsername(res.data.others.fullname);
       // setLoadingUserData(false);
       // localStorage.setItem('user', JSON.stringify(res.data));
       // navigate("/");

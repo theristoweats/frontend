@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userActions"; 
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+
+import FbLoginIcon from "../icons/facebook-2.png";
+import GoogleLoginIcon from "../icons/google.png";
+import DbIcon from "../images/loginwin.png";
 // import SocialButton from "../actions/SocialButtons";
 
 const Container = styled.div` 
@@ -292,14 +296,14 @@ const HeroSection = () => {
           >
             Login with Facebook
           </SocialButton>         */}
-            {/* <LoginWithFacebook style={{"marginRight":"10px"}}>
-              <IconFB src="../icons/facebook-2.png" />
+            <LoginWithFacebook style={{"marginRight":"10px"}}>
+              <IconFB src={FbLoginIcon} />
               Најава со Facebook
             </LoginWithFacebook>
             <LoginWithGoogle>
-              <IconGOOGLE src="../icons/google.png" />
+              <IconGOOGLE src={GoogleLoginIcon} />
               Најава со Google
-            </LoginWithGoogle> */}
+            </LoginWithGoogle>
           </LoginWithSocialMedia>
           <OrWith>
             <Line></Line>
@@ -326,7 +330,7 @@ const HeroSection = () => {
         </LeftInside>
       </Left>
       <Right>
-        <RightImg src="../images/loginwin.png"/>
+        <RightImg src={DbIcon}/>
       </Right>
     </LoginLoad>
   );

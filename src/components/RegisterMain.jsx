@@ -6,6 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import ArrowDown from "../icons/arrow-down.png";
+import FbLoginIcon from "../icons/facebook-2.png";
+import GoogleLoginIcon from "../icons/google.png";
+import DbIcon from "../images/loginwin.png";
+import { register } from "../actions/userActions";
+import validator from 'validator';
 
 const Container = styled.div` 
     display: flex;
@@ -289,22 +294,75 @@ const IconInputErrorMessage = styled.img`
 
 
 const RegisterMain = ({setUsername, user, setUser, setLoadingUserData}) => {
-        
+  const navigate = useNavigate(); 
+
+  const [emailError, setEmailError] = useState(null);
+  const [passwordError, setPasswordError] = useState(false);
+  const [registerLoading, setRegisterLoading] = useState(false);
+  
+  const [fullname, setFullName] = useState();
+  // const [phoneNumber, setPhoneNumber] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+  
+  const handelClick = (e) => {
+      if (!(fullname && fullname.length > 1)){
+        return false;
+      }
+
+      // if (!(phoneNumber && phoneNumber.length > 1)){
+      //   return false;
+      // }
+ 
+      if (!(email && email.length > 1 && validator.isEmail(email))){
+        if(email.length > 1){
+          setEmailError("Не валидна е-мајл адреса.");
+        }
+        return false;
+      }
+
+      if (!(password && password.length >= 8)){
+          if(password.length > 1){
+            setPasswordError(true);
+          }
+          return false;
+      }
+      
+
+      register(dispatch, {fullname, email, password}, navigate, setUser, setLoadingUserData, setEmailError, setRegisterLoading, setUsername);
+  }; 
+
+  const setEmailChange = (e) => {
+    setEmail(e.target.value);
+    if(emailError){
+      setEmailError(null);
+    } 
+  };
+
+  const setPasswordChange = (e) => {
+    setPassword(e.target.value);
+    if(passwordError){
+      setPasswordError(false);
+    }
+  };
+  
   return (
     <LoginLoad>
       <Left>
         <LeftInside>
           <LeftMainTexts>
             <MainText>Регистрирај нова сметка</MainText>
-            {/* <SingleText>Регистрирај со социјалните мрежи</SingleText> */}
+            <SingleText>Регистрирај со социјалните мрежи</SingleText>
           </LeftMainTexts>
-          {/* <LoginWithSocialMedia>            
+          <LoginWithSocialMedia>            
             <LoginWithFacebook style={{"marginRight":"10px"}}>
-              <IconFB src="../icons/facebook-2.png" />
+              <IconFB src={FbLoginIcon} />
                 Преку Facebook
             </LoginWithFacebook>
             <LoginWithGoogle>
-              <IconGOOGLE src="../icons/google.png" />
+              <IconGOOGLE src={GoogleLoginIcon} />
               Преку Google
             </LoginWithGoogle>
           </LoginWithSocialMedia>
@@ -312,27 +370,39 @@ const RegisterMain = ({setUsername, user, setUser, setLoadingUserData}) => {
             <Line></Line>
             <OrWithText>Или со</OrWithText>
             <Line></Line>
-          </OrWith> */}
+          </OrWith>
           <InputsProfileLogin> 
 {/* 
             {error && <ErrorBox>
               <ErrorText>Погрешни податоци!</ErrorText>
             </ErrorBox>} */}
-            <Input type="text"  placeholder="Име и презиме"  /> 
-            <Input type="text"  placeholder="Телефонски број"  /> 
+            <Input type="text"  placeholder="Име и презиме"  onChange={(e)=>setFullName(e.target.value)}/> 
+            {/* <Input type="text"  placeholder="Телефонски број"  />  */}
             <InputWithErrorMessage>
              
+              {emailError && <InputErrorMessage>
+                 <InputErrorMessageInside>
+                    <IconInputErrorMessage src={ArrowDown}/>
+                    <InputErrorMessageText>{emailError}</InputErrorMessageText>
+                 </InputErrorMessageInside>
+              </InputErrorMessage> }
 
-              <Input type="email" placeholder="Е-мајл"  />
+              <Input type="email" placeholder="Е-мајл"  onChange={(e)=>{setEmailChange(e)}}/>
             </InputWithErrorMessage>
 
             <InputWithErrorMessage>
        
+             {passwordError && <InputErrorMessage>
+                 <InputErrorMessageInside>
+                    <IconInputErrorMessage src={ArrowDown}/>
+                    <InputErrorMessageText>Кратка лозинка, мин. 8 букви.</InputErrorMessageText>
+                 </InputErrorMessageInside>
+              </InputErrorMessage> }
 
-              <Input type="password" placeholder="Лозинка"  />
+              <Input type="password" placeholder="Лозинка" onChange={(e)=>{setPasswordChange(e)}} />
             </InputWithErrorMessage>
 
-            <LoginButton>Регистрирај се</LoginButton>
+            <LoginButton onClick={handelClick} disabled={registerLoading}>Регистрирај се</LoginButton>
             <NotMemberRegister>
               <NotMemberRegisterText>Веќе сте регистрирани?</NotMemberRegisterText>
               <Link to="/login" style={{textDecoration:"none", color:"white", marginLeft:"5px", fontWeight:"bold", fontFamily:"GilroyLight"}}>Најви се</Link>
@@ -342,7 +412,7 @@ const RegisterMain = ({setUsername, user, setUser, setLoadingUserData}) => {
         </LeftInside>
       </Left>
       <Right>
-        <RightImg src="../images/loginwin.png"/>
+        <RightImg src={DbIcon}/>
       </Right>
     </LoginLoad>
   );
