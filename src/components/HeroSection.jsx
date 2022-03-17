@@ -3,6 +3,7 @@
 import styled from "styled-components"; 
 import shoppingcart from "../icons/shoppingcart.png";
 import { mobile, desktop1 } from "../responsive";
+import SearchBarIcon from "../icons/search-b.png";
 
 const Container = styled.div` 
     display: flex;
@@ -30,7 +31,7 @@ const HeroInside = styled.div`
 
 const Left = styled.div`
     width:50%;
-    ${mobile({ width: "100%", paddingLeft:"30px", paddingRight:"30px" })}
+    ${mobile({ width: "100%", paddingLeft:"20px", paddingRight:"20px" })}
 `;
 
 
@@ -100,7 +101,7 @@ const Input = styled.input`
     }
 
     ${desktop1({ width: "450px", paddingRight:"148px" })}
-    ${mobile({ width: "100%" })}
+    ${mobile({ width: "100%", height:"12px", fontSize:"12px", paddingRight:"20px" })}
 
 `;
 
@@ -114,6 +115,8 @@ const SearchIcon = styled.img`
     margin-top: 11px;
     margin-left: 14px;
     filter: brightness(0) invert(1); 
+    ${mobile({ marginTop: "8px" })}
+
 `;
 
 const Button = styled.button`
@@ -137,6 +140,8 @@ const Button = styled.button`
     cursor:pointer;
     font-family: GilroyLight;
     outline:none;
+    ${mobile({ display: "none" })}
+
 `;
 
 const CartImg = styled.img`
@@ -160,7 +165,7 @@ const HeroSection = () => {
                     </Texts>
                     <SearchBar>    
                         <Input placeholder="Пребарај, над 200 достапни производи" />
-                        <SearchIcon src="./icons/search-b.png"></SearchIcon>
+                        <SearchIcon src={SearchBarIcon}></SearchIcon>
                         <Button>Пребарај</Button>
                     </SearchBar>
                 </Left>

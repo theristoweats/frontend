@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { mobile, desktop1 } from "../responsive";
 
 import 'swiper/css';
 
@@ -23,6 +24,7 @@ const CategoryName = styled.span`
   color: #e0e0e0;
   font-size: 13px;
   font-family: GilroyLight;
+  ${mobile({ fontSize: "12px" })}
 `;
  
 
