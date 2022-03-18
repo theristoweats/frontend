@@ -3,6 +3,7 @@ import { useState } from "react";
 import {deleteCartItem,incDecCartItem} from "../actions/cartActions";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
+import DeleteItemIcon from "../icons/delete.png";
 
 const SingleProductInCart = styled.div`
 display: flex;
@@ -252,7 +253,7 @@ const LoadCartItems = ({products, updateQuantity}) => {
                         </ProductQuantity>
                     </ProductInfoInside>
                     <DeleteProductFromCart href="#" onClick={(e)=>{handleDelete(e, product._id)}}>
-                        <IconDeleteProductFromCart src="../icons/delete.png"></IconDeleteProductFromCart>
+                        <IconDeleteProductFromCart src={DeleteItemIcon}></IconDeleteProductFromCart>
                     </DeleteProductFromCart>
                 </ProductInCartInfo>
             </SingleProductInCart>))}

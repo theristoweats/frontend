@@ -18,6 +18,11 @@ import EditAddressModal from "./EditAddressModal";
 import { placeOrder } from "../actions/ordersActions";
 import LoadingInButton from "../loadings/LoadingInButton";
 import { useNavigate } from 'react-router-dom';
+import { mobile, desktop1 } from "../responsive";
+import AAddressICON from "../icons/address.png";
+import CCCCCIcon from "../icons/contract.png";
+import WaletIcon from "../icons/wallet.png";
+import DiscountIcon from "../icons/discounts.png";
 
 
 const Container = styled.div` 
@@ -38,6 +43,7 @@ const LoadCartPro = styled.div`
     min-height: 100vh;
     padding-top: 80px;
     justify-content: center;
+    ${mobile({ flexDirection: "column" })}
 `;
 
 const Left = styled.div`
@@ -47,6 +53,7 @@ const Left = styled.div`
     min-height: 500px;
     border-radius: 10px;
     padding-bottom: 10px;
+    ${mobile({ width: "100%" })}
 `;
 
 const LeftInside = styled.div`
@@ -194,6 +201,7 @@ const PromoCodeInput = styled.input`
 
 const Right = styled.div`
     width: 30%;
+    ${mobile({ width: "100%", marginTop:"20px" })}
 `;
 
 const RightMain = styled.div`
@@ -411,7 +419,7 @@ const MainCart = ({user}) => {
                         <CartLoadTypes>
                             <PathSingle>   
                                 <PathMain>
-                                    <Icon src="../icons/address.png"></Icon>
+                                    <Icon src={AAddressICON}></Icon>
                                 </PathMain>
                                 <PathTo></PathTo>
                             </PathSingle>
@@ -451,7 +459,7 @@ const MainCart = ({user}) => {
                         <CartLoadTypes>
                             <PathSingle>   
                                 <PathMain>
-                                    <Icon src="../icons/contract.png"></Icon>
+                                    <Icon src={CCCCCIcon}></Icon>
                                 </PathMain>
                                 <PathTo></PathTo>
                             </PathSingle>
@@ -475,7 +483,7 @@ const MainCart = ({user}) => {
                         <CartLoadTypes>
                             <PathSingle>   
                                 <PathMain>
-                                    <Icon src="../icons/wallet.png" ></Icon>
+                                    <Icon src={WaletIcon} ></Icon>
                                 </PathMain>
                                 <PathTo></PathTo>
                             </PathSingle>
@@ -503,7 +511,7 @@ const MainCart = ({user}) => {
                         <CartLoadTypes>
                             <PathSingle>   
                                 <PathMain>
-                                    <Icon src="../icons/discounts.png" ></Icon>
+                                    <Icon src={DiscountIcon} ></Icon>
                                 </PathMain>
                                 <PathTo></PathTo>
                             </PathSingle>
