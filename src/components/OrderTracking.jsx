@@ -31,7 +31,7 @@ const OrderTrack = styled.div`
     padding-right:10px;
     padding-top: 5px;
     align-items: center;
-    ${mobile({ flexDirection: "column", padding:"25px" })}
+    ${mobile({ flexDirection: "column", padding:"25px", paddingRight:"25px" })}
 `;
  
 const Left = styled.div`

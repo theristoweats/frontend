@@ -43,7 +43,7 @@ const SimpleText = styled.p`
     font-size: 14px;
     font-family: GilroyLight;
     margin-top: 10px;
-    ${mobile({ fontSize: "13px" })}
+    ${mobile({ fontSize: "12px" })}
 
 `;
 

@@ -11,6 +11,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 40px;
+    margin-bottom:60px;
 `;
 
 const Wrapper = styled.div`

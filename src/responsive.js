@@ -15,3 +15,13 @@ export const desktop1 = (props) => {
     }
   `;
 }
+
+
+
+export const desktop = (props) => {
+    return css`
+    @media only screen and (min-width: 871px) {
+      ${props}
+    }
+  `;
+}

@@ -2,7 +2,7 @@
 // import { useState } from "react";
 import styled from "styled-components"; 
 import shoppingcart from "../icons/shoppingcart.png";
-import { mobile, desktop1 } from "../responsive";
+import { mobile, desktop1, desktop } from "../responsive";
 import SearchBarIcon from "../icons/search-b.png";
 
 const Container = styled.div` 
@@ -45,6 +45,7 @@ const Right = styled.div`
 `;
 
 const Texts = styled.div`
+    ${mobile({ display: "flex", alignItems:"center" })}
 `;
 
 const MainText = styled.h1` 
@@ -150,7 +151,15 @@ const CartImg = styled.img`
     object-fit: contain;
     ${desktop1({ width: "300px", height:"300px" })}
     ${mobile({ display: "none" })}
+`;
 
+const CartImgMobile = styled.img` 
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    order:1;
+    margin-left:10px;
+    ${desktop({ display: "none"})}
 `;
 
 const HeroSection = () => {
@@ -160,6 +169,7 @@ const HeroSection = () => {
             <HeroInside>
                 <Left>
                     <Texts>
+                        <CartImgMobile src={shoppingcart}></CartImgMobile>
                         <MainText>Одмори се ние ќе ти донесеме до пред врата се што ти треба!</MainText>
                         <SimpleText>Од сега со нас се ти е на дофат. Од комфорот на твојот кревет можеш да си испазаруваш. Ние ќе ти завршиме се, само ти треба да ја земиш нарачката од пред вата.</SimpleText>
                     </Texts>
