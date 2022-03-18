@@ -15,6 +15,7 @@ import { listProducts } from '../actions/productActions';
 import iconSelMenu from "../icons/down.png";
 import Loading from "../components/Loading";
 import ErrorProducts from "../components/ErrorProducts";
+import { mobile, desktop1, desktop } from "../responsive";
 
 
 
@@ -42,10 +43,13 @@ const ProductsLoadAndFilter = styled.div`
 const FullScreenLoad = styled.div`
     display: flex;
     width: 100%;
+    ${mobile({ flexDirection: "column" })}
+
 `;
 
 const LeftFilter = styled.div`
     width: 25%;
+    ${mobile({ width: "100%", display:"none" })}
 `;
 
 const FilterMain = styled.div`
@@ -142,6 +146,7 @@ const MaxPriceAc = styled.input`
 const RightProductsLoad = styled.div` 
     width: 80%;
     margin-left: 25px; 
+    ${mobile({ width: "100%", marginLeft:"0px" })}
 `;
 
 const ProductsLoadInside = styled.div`
@@ -153,6 +158,7 @@ const ProductsLoadedInfo = styled.div`
     display: flex;
     width: 100%;
     align-items: center; 
+    ${mobile({ flexDirection: "column", alignItems:"flex-start" })}
 `;
 
 const HeaderInfoProduct = styled.div`
@@ -164,18 +170,23 @@ const HeaderInfoTextProducts = styled.h1`
     color: white;
     font-size: 17px;
     font-family: GilroyLight; 
+    ${mobile({ marginTop:"10px", marginBottom:"15px" })}
 `;
 
 const ChooseProductsType = styled.div`
     display:flex;
     align-items:center;
+    ${mobile({ width:"100%" })}
+
 `;
 
 const ChooseSpan = styled.span` 
     color: #d1d1d1;
     font-size: 14px;
     font-family: GilroyLight; 
-    margin-right:10px
+    margin-right:10px; 
+    ${mobile({ display:"flex",flex:"1" })}
+    
 `;
 
 const FiltersChoosed = styled.div`
@@ -237,7 +248,7 @@ const DeleteFilterIcon = styled.label`
 
 const ProductsInfoInfo = styled.div`
     display:flex;
-    flex-direction:column
+    flex-direction:column;
 `;
  
 

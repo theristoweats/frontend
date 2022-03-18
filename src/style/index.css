@@ -98,3 +98,9 @@ body{
 .wrongPw{
     border:1px solid #e41e3f !important;
 }
+
+@media only screen and (max-width: 870px) {
+    ._Thloflop{
+        width: 90%;
+    }
+}

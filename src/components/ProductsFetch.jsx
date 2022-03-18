@@ -11,6 +11,7 @@ import cartIcon from "../icons/shopping-cart.png";
 import { useCookies } from "react-cookie";
 import LoadingAddProductCart from "../loadings/LoadingAddProductCart";
 import ErrorAddProductCart from "../loadings/ErrorAddProductCart";
+import { mobile, desktop1 } from "../responsive";
 
 // import {
 //     cartAddToCartReducer
@@ -24,6 +25,7 @@ const Product = styled.div`
     flex-direction: column;
     margin-right: 10px;
     margin-bottom: 10px;
+    ${mobile({ width: "100%" })}
 `;
 
 const Main = styled.div`
@@ -115,6 +117,8 @@ const ProductsLoadMain = styled.div`
 
 const Button = styled.a`
     text-decoration:none;
+    ${mobile({ width: "100%" })}
+
 `;
 
 
@@ -138,6 +142,7 @@ const InsideModalProduct = styled.div`
     border-radius:10px;
     border-top:5px solid #e41e3f;
     background-color:#18191a;
+    ${mobile({ width: "100%", height:"500px;" })}
 `;
 
 const CloseToCartModalProduct = styled.div`
@@ -187,6 +192,7 @@ const MainProductInformation = styled.div`
     margin-top:20px;
     height:380px;
     width:100%;
+    ${mobile({ height: "320px" })}
 `;
 
 const ModalProductImage = styled.div`
@@ -197,12 +203,14 @@ const ModalProductImage = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
+    ${mobile({ height: "190px" })}
 `;
 
 const ModalProductImageLoad = styled.img`
     width:210px;
     height:210px;
     object-fit:contain;
+    ${mobile({ height: "170px" })}
 `;
 
 const ModalProductTitle = styled.h1`
@@ -210,6 +218,7 @@ const ModalProductTitle = styled.h1`
     font-size:25px;
     font-family: GilroyLight; 
     margin-top:20px;
+    ${mobile({ fontSize: "20px" })}
 `;
 
 const ModalProductInformation = styled.div`
@@ -220,6 +229,7 @@ const ModalProductInformationText = styled.h3`
     font-family: GilroyLight; 
     color:#adadad;
     font-size:17px;
+    ${mobile({ fontSize: "14px" })}
 `;
 
 const SingleInformation = styled.div`
@@ -239,6 +249,7 @@ const InformationValue = styled.span`
     color:white;
     font-family: GilroyLight;
     font-size:16px;
+    ${mobile({ fontSize: "13px" })}
 `;
 
 const ModalProductAddToCartButtons = styled.div`
@@ -256,6 +267,7 @@ const ProductQuantity = styled.div`
     border-radius: 10px;
     font-size: 14px;
     border: 1px solid #343434;
+    ${mobile({ fontSize: "13px" })}
 `;
 
 const DecIncBtn = styled.button`
@@ -272,6 +284,7 @@ const DecIncBtn = styled.button`
     cursor:pointer;
     font-size:15px;
     font-family: GilroyLight;
+    ${mobile({ fontSize: "13px" })}
 
 `;
 
@@ -282,6 +295,7 @@ const CountDecIncBtn = styled.span`
     justify-content: center;
     font-size:16px;
     color:white;
+    ${mobile({ fontSize: "13px" })}
 `;
 
 const ModalProductAddToCartButtonMain = styled.button`
@@ -304,6 +318,7 @@ const ModalProductAddToCartButtonsIcon = styled.img`
     height:20px;
     filter: brightness(0) invert(1); 
     margin-left:10px;
+    ${mobile({ width: "17px", height:"17px" })}
 `;
 
 const ModalProductAddToCartButtonsText = styled.label`
@@ -311,6 +326,7 @@ const ModalProductAddToCartButtonsText = styled.label`
     cursor:pointer;
     font-family: GilroyLight;
     font-size:15px;
+    ${mobile({ fontSize: "13px" })}
 `;
  
 
@@ -419,6 +435,7 @@ const ProductsFetch = ({products}) => {
                       duration: 0.3
                     }
                 }}
+                className="_Thloflop"
             >
             <InsideModalProduct>
                 
