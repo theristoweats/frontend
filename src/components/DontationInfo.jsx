@@ -1,6 +1,7 @@
 // import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 // import { useState } from "react";
 import styled from "styled-components"; 
+import { mobile, desktop1 } from "../responsive";
 
 const Container = styled.div`
     display: flex;
@@ -17,10 +18,12 @@ const Main = styled.div`
     width: 100%;
     height: 190px;
     border-radius: 10px;  
+    ${mobile({ height: "200px" })}
 `;
 
 const Donation = styled.div `
     padding:30px;
+
 `;
 
 const Texts = styled.div`
@@ -32,6 +35,7 @@ const MainText = styled.h1`
     font-size: 25px;
     font-family: GilroyLight;
     color: white;
+    ${mobile({ fontSize: "20px" })}
 `;
 
 const SimpleText = styled.p`
@@ -39,6 +43,8 @@ const SimpleText = styled.p`
     font-size: 14px;
     font-family: GilroyLight;
     margin-top: 10px;
+    ${mobile({ fontSize: "13px" })}
+
 `;
 
 const DontationBar = styled.div`
@@ -53,7 +59,9 @@ const DatesDonation = styled.div`
 
 const Date = styled.label` 
     color: white;
+    font-family: GilroyLight;
     font-size: 14px;
+    ${mobile({ fontSize: "12px" })}
 `;
 
 const PorgressBar = styled.div`
@@ -90,6 +98,7 @@ const Collected = styled.span`
     padding-right: 15px;
     padding-top: 5px;
     padding-bottom: 5px; 
+    ${mobile({ fontSize: "12px" })}
 `;
 
 const Movement = styled.div`

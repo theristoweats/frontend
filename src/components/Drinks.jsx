@@ -2,7 +2,9 @@
 // import { useState } from "react";
 import styled from "styled-components"; 
 import { ProductsLoad } from "../data";
- import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { mobile, desktop1 } from "../responsive";
+import AddToCartIconA from "../icons/shopping-cart.png";
 import 'swiper/css';
 
 const Container = styled.div`
@@ -38,12 +40,14 @@ const Right = styled.a`
     font-weight: bold;
     font-family: GilroyLight;
     text-decoration:none;
+    ${mobile({ fontSize: "13px" })}
 `;
 
 const Text = styled.h2`  
     color: white;
     font-size: 25px;
     font-family: GilroyLight;
+    ${mobile({ fontSize: "15px", width:"200px" })}
 `;
 
 const Products = styled.div`
@@ -58,6 +62,7 @@ const Product = styled.div`
     display: flex;  
     flex-direction: column;
     margin-right: 20px;
+    ${mobile({ width:"255px" })}
 `;
 
 const Main = styled.div`
@@ -69,6 +74,7 @@ const Main = styled.div`
     padding-top: 30px;
     flex-direction: column;
     padding-bottom: 10px;
+    ${mobile({ height:"170px" })}
 
 `;
 
@@ -76,6 +82,7 @@ const Image = styled.img`
     width: 200px;
     height: 220px;
     object-fit: contain;
+    ${mobile({ height:"150px" })}
 `;
 
 const Name = styled.label`
@@ -84,6 +91,7 @@ const Name = styled.label`
     margin-top: 15px;
     margin-bottom: 10px;
     font-size: 14px;
+    ${mobile({ fontSize:"13px" })}
 `;
 
 const Info = styled.div`
@@ -105,12 +113,14 @@ const Price = styled.span`
     font-weight: bold;
     font-family: GilroyLight;
     font-size: 16px;
+    ${mobile({ fontSize:"15px" })}
 `;
 
 const AddToCartText = styled.span`
     color: white;
     font-family: GilroyLight;
     font-size:13px;
+    ${mobile({ fontSize:"12px" })}
 `;
 
 const PriceInfo = styled.div` 
@@ -133,8 +143,8 @@ const AddToCartIcon = styled.img`
     height: 15px; 
     filter: brightness(0) invert(1); 
     margin-left: 5px;
-
 `;
+
 
 const DrinksCategory = styled.div`
     margin-top: 30px;
@@ -229,7 +239,7 @@ const Drinks = () => {
                                     </PriceInfo>
                                     <AddToCart>
                                         <AddToCartText>Во кошничка</AddToCartText>
-                                        <AddToCartIcon src="./icons/shopping-cart.png"></AddToCartIcon>
+                                        <AddToCartIcon src={AddToCartIconA}></AddToCartIcon>
                                     </AddToCart>
                                 </InfoWrapper>
                             </Info>

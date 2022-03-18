@@ -2,6 +2,8 @@
 // import { useState } from "react";
 import styled from "styled-components"; 
 // import { ProductsLoad } from "../data";
+import { mobile, desktop1 } from "../responsive";
+import MapImg from "../images/locateme.png";
   
 const Container = styled.div`
     display: flex;
@@ -21,24 +23,28 @@ const Main = styled.div`
     border-radius: 10px;
     display: flex; 
     align-items: center;
+    ${mobile({ flexDirection: "column", height:"auto" })}
 `;
 
 const OrderTrack = styled.div`
     display: flex;
-    width: 100%;
     padding-right:10px;
     padding-top: 5px;
     align-items: center;
+    ${mobile({ flexDirection: "column", padding:"25px" })}
 `;
  
 const Left = styled.div`
     width: 45%;
     padding-left: 30px;
     padding-right: 30px;
+    ${mobile({ width: "100%" })}
+
 `;
 
 const Right = styled.div`
     width: 55%;
+    ${mobile({ width: "100%", marginTop:"20px" })}
 `;
 
 const Texts = styled.div`
@@ -51,12 +57,14 @@ const MainText = styled.h1`
     color: white;
     margin-bottom: 10px;
     font-size: 25px;
+    ${mobile({ fontSize: "20px"})}
 `;
 
 const SimpleText = styled.p`
     color: #b8b8b8;
     font-size: 13px; 
     font-family: GilroyLight;
+    ${mobile({ fontSize: "12px"})}
 `;
 
 const Button = styled.button`
@@ -93,11 +101,11 @@ const OrderTracking = () => {
                         <Texts>
                             <MainText>Дознај до кај ти е нарачката</MainText>
                             <SimpleText>Со нас го следите целиот процес на вашата нарачка. Веќе нема да бидеш во заблуда, до каде, уште колку време колку брзо ќе дојде нарачката до пагот на твојата врата!</SimpleText>
-                            <Button>Дознај повеќе</Button>
+                            {/* <Button>Дознај повеќе</Button> */}
                         </Texts>
                     </Left>
                     <Right>
-                        <Map src="./images/locateme.png"></Map>
+                        <Map src={MapImg}></Map>
                     </Right>
                 </OrderTrack>
             </Main>
