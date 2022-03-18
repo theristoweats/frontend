@@ -93,6 +93,7 @@ const Name = styled.label`
     margin-top: 15px;
     margin-bottom: 10px;
     font-size: 14px;
+    ${mobile({ fontSize:"13px" })}
 `;
 
 const Info = styled.div`
@@ -114,12 +115,14 @@ const Price = styled.span`
     font-weight: bold;
     font-family: GilroyLight;
     font-size: 16px;
+    ${mobile({ fontSize:"15px" })}
 `;
 
 const AddToCartText = styled.span`
     color: white;
     font-family: GilroyLight;
     font-size:13px;
+    ${mobile({ fontSize:"12px" })}
 `;
 
 const PriceInfo = styled.div` 
