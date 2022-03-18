@@ -3,7 +3,9 @@
 import styled from "styled-components"; 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { mobile, desktop1 } from "../responsive";
 import { ProductsLoad } from "../data";
+import AddToCartIconA from "../icons/shopping-cart.png";
 // import ProductModal from "../componentes/ProductModal";
  
 
@@ -40,12 +42,14 @@ const Right = styled.a`
     font-weight: bold;
     font-family: GilroyLight;
     text-decoration:none;
+    ${mobile({ fontSize: "13px" })}
 `;
 
 const Text = styled.h2`  
     color: white;
     font-size: 25px;
     font-family: GilroyLight;
+    ${mobile({ fontSize: "15px", width:"200px" })}
 `;
 
 const Products = styled.div`
@@ -60,6 +64,7 @@ const Product = styled.div`
     display: flex;  
     flex-direction: column;
     margin-right: 20px;
+    ${mobile({ width:"255px" })}
 `;
 
 const Main = styled.div`
@@ -71,6 +76,7 @@ const Main = styled.div`
     padding-top: 30px;
     flex-direction: column;
     padding-bottom: 10px;
+    ${mobile({ height:"170px" })}
 
 `;
 
@@ -78,6 +84,7 @@ const Image = styled.img`
     width: 200px;
     height: 220px;
     object-fit: contain;
+    ${mobile({ height:"150px" })}
 `;
 
 const Name = styled.label`
@@ -171,7 +178,7 @@ const PopularProducts = () => {
                                     </PriceInfo>
                                     <AddToCart>
                                         <AddToCartText>Во кошничка</AddToCartText>
-                                        <AddToCartIcon src="./icons/shopping-cart.png"></AddToCartIcon>
+                                        <AddToCartIcon src={AddToCartIconA}></AddToCartIcon>
                                     </AddToCart>
                                 </InfoWrapper>
                             </Info>
