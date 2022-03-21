@@ -12,6 +12,7 @@ import { useCookies } from "react-cookie";
 import LoadingAddProductCart from "../loadings/LoadingAddProductCart";
 import ErrorAddProductCart from "../loadings/ErrorAddProductCart";
 import { mobile, desktop1 } from "../responsive";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 // import {
 //     cartAddToCartReducer
@@ -399,7 +400,14 @@ const ProductsFetch = ({products}) => {
                 setModalIsOpen(true);}}>
                 <Product item={item} key={item._id}>
                     <Main>
-                        <Image src={item.img}></Image>
+                        {/* <Image src={item.img}></Image> */}
+                        
+                        <LazyLoadImage
+                        // alt={image.alt}
+                        height="220px"
+                        style={{objectFit:"contain"}}
+                        src={item.img}
+                        width="200px" />
                         <Name>{item.title}</Name>
                     </Main>
                     <Info>
