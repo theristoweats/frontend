@@ -36,7 +36,7 @@ const Categories = () => {
   useEffect(() => {
       const getCats = async () => {
         try {
-          const res = await axios.get("http://apieats.theristow.com/api/categories");  
+          const res = await axios.get("https://apieats.theristow.com/api/categories");  
           setCategories(res.data);  
         } catch (err) {}
       };

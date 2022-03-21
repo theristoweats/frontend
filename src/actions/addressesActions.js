@@ -9,7 +9,7 @@ export const loadAddresses = async (userData, setLoadingAddresses, setAddresses)
 
   setLoadingAddresses(true);  
   try { 
-      const res = await axios.get("http://apieats.theristow.com/api/addresses/"+JSON.parse(userData).others._id,
+      const res = await axios.get("https://apieats.theristow.com/api/addresses/"+JSON.parse(userData).others._id,
       {headers: { token: `Bearer ${TOKEN}` }},
       );
       setLoadingAddresses(false);  
@@ -26,7 +26,7 @@ export const addAddress = async (userData, setAddNewAddress, lat, lng, name, add
   try { 
       const userId = JSON.parse(userData).others._id;
       const res = await axios.post(
-        "http://apieats.theristow.com/api/addresses/", {userId, lat, lng, name, addressShortName, addressDescription },
+        "https://apieats.theristow.com/api/addresses/", {userId, lat, lng, name, addressShortName, addressDescription },
         {headers: { token: `Bearer ${TOKEN}` }},
       ); 
       setNewAddress(false);  
@@ -47,7 +47,7 @@ export const deleteAddress = async (userData, addressId, setNewAddress, setAddre
     const userId = JSON.parse(userData).others._id;
     try {
       const { data } = await axios.delete(
-        `http://apieats.theristow.com/api/addresses/${userId}/${addressId}`
+        `https://apieats.theristow.com/api/addresses/${userId}/${addressId}`
       ); 
       setNewAddress(true);
       setNewAddress(false);
@@ -67,7 +67,7 @@ export const editAddress = async (userData, setAddNewAddress, lat, lng, name, ad
       const userId = JSON.parse(userData).others._id;
 
       const res = await axios.put(
-        "http://apieats.theristow.com/api/addresses/", {userId, lat, lng, name, addressShortName, addressDescription, addressID },
+        "https://apieats.theristow.com/api/addresses/", {userId, lat, lng, name, addressShortName, addressDescription, addressID },
         {headers: { token: `Bearer ${TOKEN}` }},
       ); 
       setNewAddress(true); 

@@ -19,7 +19,7 @@ export const login = async (dispatch, user, navigate) => {
 
 export const userCheck = async (userData, setUsername, setUser, setLoadingUserData) => {
     try {
-      const res = await userRequest.post("http://apieats.theristow.com/api/auth/checktoken/");  
+      const res = await userRequest.post("https://apieats.theristow.com/api/auth/checktoken/");  
       console.log(res.data);
       const username = JSON.parse(userData).others.fullname;
       setUsername(username);
@@ -80,8 +80,8 @@ export const updateProfile = async (dispatch, userData, newFullname, newPhonenum
       const userId = JSON.parse(userData).others._id;
       console.log(userId);
       const res = await axios.put(
-        // "http://apieats.theristow.com/api/user/"+userId,
-        "http://apieats.theristow.com/api/user/"+userId,
+        // "https://apieats.theristow.com/api/user/"+userId,
+        "https://apieats.theristow.com/api/user/"+userId,
         {newFullname, newPhonenumber, newPassword},
         {headers: { token: `Bearer ${TOKEN}` }},
       );
@@ -103,7 +103,7 @@ export const oldPasswordVerify = async (userData, setVerifiedPassword, setErrorP
       const userId = JSON.parse(userData).others._id;
       console.log(userId);
       const res = await axios.post(
-        "http://apieats.theristow.com/api/auth/passwordverify/"+userId,
+        "https://apieats.theristow.com/api/auth/passwordverify/"+userId,
         {oldPassword},
         {headers: { token: `Bearer ${TOKEN}` }},
       );  

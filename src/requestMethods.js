@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://apieats.theristow.com/api/";
+const BASE_URL = "https://apieats.theristow.com/api/";
 
 // const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVlMjBiNzg5YjQ3MTI4YWU0Y2IxZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NTI1Njc3MSwiZXhwIjoxNjQ1NTE1OTcxfQ.mhnJ2YG8JaSZNut9i2IqR9HroTPDaL0aijjK5VAu_ok";
 

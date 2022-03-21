@@ -10,7 +10,7 @@ export const placeOrder = (user_UUID, userData, deliveryAddress, setPlacingOrder
     try { 
         const userId = JSON.parse(userData).others._id;
         const res = await axios.post(
-          "http://apieats.theristow.com/api/orders/", {user_UUID, userId, deliveryAddress },
+          "https://apieats.theristow.com/api/orders/", {user_UUID, userId, deliveryAddress },
           {headers: { token: `Bearer ${TOKEN}` }},
         );  
         const returnedOrderId = res.data._id;
@@ -30,7 +30,7 @@ export const orderDetails = (userData, navigate, orderId, fetchingStart, setOrde
     try { 
         const userId = JSON.parse(userData).others._id;
         const res = await axios.get(
-          "http://apieats.theristow.com/api/orders/"+orderId+"/"+userId,
+          "https://apieats.theristow.com/api/orders/"+orderId+"/"+userId,
           {headers: { token: `Bearer ${TOKEN}` }},
         );
         setOrderDetails(res.data);
@@ -57,7 +57,7 @@ export const getAllOrders = (userData, navigate, fetchingStart, setAllOrders) =>
     try { 
         const userId = JSON.parse(userData).others._id;
         const res = await axios.get(
-          "http://apieats.theristow.com/api/orders/"+userId,
+          "https://apieats.theristow.com/api/orders/"+userId,
           {headers: { token: `Bearer ${TOKEN}` }},
         );
         setAllOrders(res.data);
@@ -77,7 +77,7 @@ export const getDashboardStatistic = (userData, navigate, fetchingStart, setDash
         const userId = JSON.parse(userData).others._id;
         console.log(userId);
         const res = await axios.get(
-          `http://apieats.theristow.com/api/dashboard/stats/${userId}`,
+          `https://apieats.theristow.com/api/dashboard/stats/${userId}`,
           {headers: { token: `Bearer ${TOKEN}` }},
         );
         setDashboardData(res.data);

@@ -403,6 +403,7 @@ const ProductsFetch = ({products}) => {
                         {/* <Image src={item.img}></Image> */}
                         
                         <LazyLoadImage
+                        effect="blur"
                         // alt={image.alt}
                         height="220px"
                         style={{objectFit:"contain"}}
