@@ -185,8 +185,7 @@ const ChooseSpan = styled.span`
     font-size: 14px;
     font-family: GilroyLight; 
     margin-right:10px; 
-    ${mobile({ display:"flex",flex:"1" })}
-    
+    ${mobile({ display:"flex",flex:"1" })} 
 `;
 
 const FiltersChoosed = styled.div`

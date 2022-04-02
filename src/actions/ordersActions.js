@@ -10,7 +10,8 @@ export const placeOrder = (user_UUID, userData, deliveryAddress, setPlacingOrder
     try { 
         const userId = JSON.parse(userData).others._id;
         const res = await axios.post(
-          "https://apieats.theristow.com/api/orders/", {user_UUID, userId, deliveryAddress },
+              "https://apieats.theristow.com/api/orders/", {user_UUID, userId, deliveryAddress },
+        //   "http://localhost:5000/api/orders/", {user_UUID, userId, deliveryAddress },
           {headers: { token: `Bearer ${TOKEN}` }},
         );  
         const returnedOrderId = res.data._id;

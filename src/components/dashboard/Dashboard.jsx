@@ -8,7 +8,6 @@ import MyProfile from "./MyProfile";
 import io from "socket.io-client";
 import { useEffect } from "react";
 
-
 const LoadDashboardMain = styled.div`
     display: flex;
     min-height: 100vh;
