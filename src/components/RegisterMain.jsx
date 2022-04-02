@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 `;
 
 const LoginLoad = styled.div`
-  height: 100vh;
+  height: auto;
   display: flex; 
   padding-top: 90px;
 `;

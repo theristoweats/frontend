@@ -11,6 +11,7 @@ import FbLoginIcon from "../icons/facebook-2.png";
 import GoogleLoginIcon from "../icons/google.png";
 import DbIcon from "../images/loginwin.png";
 // import SocialButton from "../actions/SocialButtons";
+import { mobile, desktop1, desktop, desktop2, desktop3, mobile1, mobile3 } from "../responsive";
 
 const Container = styled.div` 
     display: flex;
@@ -24,9 +25,10 @@ const Wrapper = styled.div`
 `;
 
 const LoginLoad = styled.div`
-  height: 100vh;
+  height: auto;
   display: flex; 
   padding-top: 90px;
+  ${mobile1({ width: "100%", hegiht:"100vh" })}
 `;
 
 const Left = styled.div`
@@ -35,6 +37,10 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   justify-content: center; 
+  ${mobile1({ width: "100%", paddingTop:"100px", paddingBottom:"100px" })}
+  ${mobile3({   paddingTop:"70px", paddingBottom:"70px"})}
+
+   
 `;
 
 const LeftInside = styled.div`
@@ -44,6 +50,9 @@ const LeftInside = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  ${mobile1({ width: "100%", paddingTop:"100px", paddingBottom:"100px" })}
+  ${mobile3({ width: "85%", paddingTop:"0px", paddingBottom:"0px"})}
+
 `;
 
 const LeftMainTexts = styled.div`
@@ -56,6 +65,7 @@ const MainText = styled.h1`
   font-size: 30px;
   font-family: GilroyLight;
   color: white;
+  ${mobile3({ fontSize: "25px"})}
 `;
 
 const SingleText = styled.p`
@@ -70,6 +80,8 @@ const LoginWithSocialMedia = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  ${mobile3({ flexDirection: "column"})}
+
 `;
 
 const LoginWithFacebook = styled.button`
@@ -85,6 +97,7 @@ const LoginWithFacebook = styled.button`
   font-family: GilroyLight;
   background-color:transparent;
   color:white;
+  ${mobile3({ width: "100%"})}
 `;
 
 const IconFB = styled.img`
@@ -108,6 +121,7 @@ const LoginWithGoogle = styled.button`
   font-family: GilroyLight;
   background-color:transparent;
   color:white;
+  ${mobile3({ width: "100%", marginTop:"10px;"})}
 `;
 
 const IconGOOGLE = styled.img`
@@ -158,13 +172,15 @@ const Input = styled.input`
   margin-bottom: 10px;
   color: white;
   font-size: 14px;
-  font-family: GilroyLight;
+  font-family: GilroyLight; 
+  ${mobile3({ width: "100%"})}
 `;
 
 const ForgotPasswordRememberMe = styled.div`
   display: flex;
   width: 420px;
   justify-content: space-between;
+  ${mobile3({ width: "100%"})}
 `;
 
 const RememberMe = styled.a`
@@ -200,7 +216,9 @@ const LoginButton = styled.button`
   &:disabled{
     opacity:.5;
     cursor:not-allowed;
-  }
+  } 
+  ${mobile3({ width: "100%"})}
+
 `;
 
 const NotMemberRegister = styled.div`
@@ -210,6 +228,7 @@ const NotMemberRegister = styled.div`
   margin-top: 20px;
   color: #b4b4b4;
   font-size: 14px;
+  ${mobile3({ flexDirection: "column"})}
 `;
 
 const NotMemberRegisterText = styled.p`
@@ -231,10 +250,13 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: center; 
+  ${mobile1({ display: "none" })}
 `;
 
 const RightImg = styled.img` 
-    width: 500px;
+    width: 500px; 
+    ${mobile1({ width: "400px" })}
+
 `;
 
 const ErrorBox = styled.div`
