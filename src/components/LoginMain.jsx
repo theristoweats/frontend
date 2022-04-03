@@ -11,7 +11,7 @@ import FbLoginIcon from "../icons/facebook-2.png";
 import GoogleLoginIcon from "../icons/google.png";
 import DbIcon from "../images/loginwin.png";
 // import SocialButton from "../actions/SocialButtons";
-import { mobile, desktop1, desktop, desktop2, desktop3, mobile1, mobile3 } from "../responsive";
+import { mobile, desktop1, desktop, desktop2, desktop3, mobile1, mobile3, mobile4 } from "../responsive";
 
 const Container = styled.div` 
     display: flex;
@@ -80,7 +80,8 @@ const LoginWithSocialMedia = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-  ${mobile3({ flexDirection: "column"})}
+  ${mobile3({ flexDirection: "row"})}
+  ${mobile4({ flexDirection: "column"})}
 
 `;
 
@@ -120,8 +121,9 @@ const LoginWithGoogle = styled.button`
   cursor:pointer;
   font-family: GilroyLight;
   background-color:transparent;
-  color:white;
-  ${mobile3({ width: "100%", marginTop:"10px;"})}
+  color:white; 
+  ${mobile3({ width: "100%"})}
+  ${mobile4({ marginTop: "10px"})}
 `;
 
 const IconGOOGLE = styled.img`

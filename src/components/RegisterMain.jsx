@@ -11,6 +11,7 @@ import GoogleLoginIcon from "../icons/google.png";
 import DbIcon from "../images/loginwin.png";
 import { register } from "../actions/userActions";
 import validator from 'validator';
+import { mobile, desktop1, desktop, desktop2, desktop3, mobile1, mobile3, mobile4 } from "../responsive";
 
 const Container = styled.div` 
     display: flex;
@@ -27,6 +28,7 @@ const LoginLoad = styled.div`
   height: auto;
   display: flex; 
   padding-top: 90px;
+  ${mobile1({ width: "100%", hegiht:"100vh" })}
 `;
 
 const Left = styled.div`
@@ -34,7 +36,10 @@ const Left = styled.div`
   background-color: #161616;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
+  
+  ${mobile1({ width: "100%", paddingTop:"100px", paddingBottom:"100px" })}
+  ${mobile3({   paddingTop:"70px", paddingBottom:"70px"})} 
 `;
 
 const LeftInside = styled.div`
@@ -44,6 +49,8 @@ const LeftInside = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  ${mobile1({ width: "100%", paddingTop:"100px", paddingBottom:"100px" })}
+  ${mobile3({ width: "85%", paddingTop:"0px", paddingBottom:"0px"})}
 `;
 
 const LeftMainTexts = styled.div`
@@ -56,6 +63,7 @@ const MainText = styled.h1`
   font-size: 30px;
   font-family: GilroyLight;
   color: white;
+  ${mobile3({ fontSize: "25px"})}
 `;
 
 const SingleText = styled.p`
@@ -70,6 +78,8 @@ const LoginWithSocialMedia = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  ${mobile3({ flexDirection: "row"})}
+  ${mobile4({ flexDirection: "column"})}
 `;
 
 const LoginWithFacebook = styled.button`
@@ -85,6 +95,7 @@ const LoginWithFacebook = styled.button`
   font-family: GilroyLight;
   background-color:transparent;
   color:white;
+  ${mobile3({ width: "100%"})}
 `;
 
 const IconFB = styled.img`
@@ -108,6 +119,8 @@ const LoginWithGoogle = styled.button`
   font-family: GilroyLight;
   background-color:transparent;
   color:white;
+  ${mobile3({ width: "100%"})}
+  ${mobile4({ marginTop: "10px"})}
 `;
 
 const IconGOOGLE = styled.img`
@@ -159,6 +172,7 @@ const Input = styled.input`
   color: white;
   font-size: 14px;
   font-family: GilroyLight;
+  ${mobile3({ width: "100%"})}
 `;
 
 const ForgotPasswordRememberMe = styled.div`
@@ -201,6 +215,7 @@ const LoginButton = styled.button`
     opacity:.5;
     cursor:not-allowed;
   }
+  ${mobile3({ width: "100%"})}
 `;
 
 const NotMemberRegister = styled.div`
@@ -210,6 +225,7 @@ const NotMemberRegister = styled.div`
   margin-top: 20px;
   color: #b4b4b4;
   font-size: 14px;
+  ${mobile3({ flexDirection: "column"})}
 `;
 
 const NotMemberRegisterText = styled.p`
@@ -231,10 +247,12 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: center; 
+  ${mobile1({ display: "none" })}
 `;
 
 const RightImg = styled.img` 
     width: 500px;
+    ${mobile1({ width: "400px" })}
 `;
 
 const ErrorBox = styled.div`
@@ -257,6 +275,9 @@ const ErrorText = styled.span`
 
 const InputWithErrorMessage = styled.div`
   position:relative;
+  
+  ${mobile3({ width: "100%", display:"flex"})}
+  
 `;
 
 const InputErrorMessage = styled.div`
@@ -376,7 +397,9 @@ const RegisterMain = ({setUsername, user, setUser, setLoadingUserData}) => {
             {error && <ErrorBox>
               <ErrorText>Погрешни податоци!</ErrorText>
             </ErrorBox>} */}
-            <Input type="text"  placeholder="Име и презиме"  onChange={(e)=>setFullName(e.target.value)}/> 
+            <InputWithErrorMessage>
+              <Input type="text"  placeholder="Име и презиме"  onChange={(e)=>setFullName(e.target.value)}/> 
+            </InputWithErrorMessage>
             {/* <Input type="text"  placeholder="Телефонски број"  />  */}
             <InputWithErrorMessage>
              
