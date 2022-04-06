@@ -9,7 +9,20 @@ import ProfileIcon from "../../icons/user-white.png";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../redux/userRedux";
+import { mobile, desktop1, desktop, desktop2, desktop3, mobile1, mobile3, mobile4  } from "../../responsive";
+import "./style.css";
 
+// width: 100%;
+// background-color: #242526;
+// height: 50px;
+// /* padding-top: 100px; */
+// position: fixed;
+// z-index: 3;
+// position: bo;
+// position: bottom;
+// border-top: 1px solid #393a3b;
+// bottom: 0;
+// margin-top: 94px;
 
 const LeftMenuMain = styled.div`
     width: 250px;
@@ -18,15 +31,30 @@ const LeftMenuMain = styled.div`
     border-right: 1px solid #393a3b;
     padding-top: 100px;
     position: fixed; 
+
+    ${mobile3({ bottom: "0", 
+                borderTop:"1px solid #393a3b", 
+                borderRight:"none", 
+                zIndex:"3", 
+                position:"fixed", 
+                width:"100%",
+                height:"50px",
+                paddingTop:"0px"
+            
+            })}
+
+
 `;
 
 const Links = styled.div`
     margin-top: 50px;
+    ${mobile3({ marginTop: "0px", display:"flex" })}
 `;
 
 const SingleLink = styled.div`
     margin-bottom: 15px;
     margin-right: -1px;
+    ${mobile3({ width: "100%", padding:"0px", display:"flex", justifyContent:"center", alignItems:"center" })}
 `;
 
 const LinkInside = styled.div`
@@ -35,18 +63,22 @@ const LinkInside = styled.div`
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    ${mobile3({ width: "100%", padding:"0px", display:"flex", justifyContent:"center", alignItems:"center", height:"50px" })}
 `;
 
 const TextLink = styled.span`
     color: white;
     font-size: 14px;
     font-family:GilroyLight;
+    
+    ${mobile3({ display: "none" })}
 `;
 
 const LinkIcon = styled.img`
     width: 20px;
     height: 20px;
     margin-right: 10px;
+    ${mobile3({ marginRight: "0px" })}
 `;
 
 
@@ -200,7 +232,7 @@ const DashboardLeftMenu = ({setUsername, page, setUser, setLoadingUserData}) =>{
                         </Link>
                     </SingleLink>
                     <br />
-                    <SingleLink>
+                    <SingleLink className="m---mobile">
                         <Link to="#" style={{textDecoration:"none"}} onClick={(e)=>{logoutHandle(e)}}>
                             <LinkInside>
                                 {/* <LinkIcon src={ProfileIcon} /> */}

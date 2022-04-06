@@ -7,6 +7,7 @@ import MyAddresses from "./MyAddresses";
 import MyProfile from "./MyProfile";
 import io from "socket.io-client";
 import { useEffect } from "react";
+import { mobile, desktop1, desktop, desktop2, desktop3, mobile1, mobile3, mobile4  } from "../../responsive";
 
 const LoadDashboardMain = styled.div`
     display: flex;
@@ -16,6 +17,7 @@ const LoadDashboardMain = styled.div`
 const DashboardRight = styled.div`
     width: 100%;
     margin-left: 250px;
+    ${mobile3({ marginLeft: "0px" })}
 `;
 const socket = io.connect("https://apieats.theristow.com/");
 

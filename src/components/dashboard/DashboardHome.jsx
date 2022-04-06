@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getDashboardStatistic } from "../../actions/ordersActions";
+import { mobile, desktop1, desktop, desktop2, desktop3, mobile1, mobile3, mobile4  } from "../../responsive";
 
 const MainWrapper = styled.div`
 `;
@@ -13,6 +14,8 @@ const MainWrapper = styled.div`
 const InsideWrapper = styled.div`
     margin-top: 100px;
     padding: 45px;
+    ${mobile3({ padding: "5%" })}
+
 `;
 
 const MainPageInfo = styled.div`
@@ -29,6 +32,7 @@ const MainTextPageInfo = styled.h1`
     font-family:GilroyLight;
     color: white;
     font-size: 30px;
+    ${mobile3({ fontSize: "20px" })}
 `;
 
 const IconBoxPageInfo = styled.div`
@@ -90,6 +94,7 @@ const StatisticNumber = styled.span`
     font-weight: bold;
     font-size: 35px;
     font-family:GilroyLight;
+    ${mobile3({ fontSize: "20px" })}
 `;
 
 
@@ -98,6 +103,7 @@ const StatisticText = styled.span`
     color: #acacac;
     margin-top: 5px;
     font-family:GilroyLight;
+    ${mobile3({ fontSize: "14px" })}
 `;
 
 // donation info
@@ -118,6 +124,7 @@ const Main = styled.div`
     width: 100%;
     height: 190px;
     border-radius: 10px;  
+    ${mobile3({ height: "auto" })}
 `;
 
 const Donation = styled.div `
@@ -133,6 +140,7 @@ const MainText = styled.h1`
     font-size: 25px;
     font-family: GilroyLight;
     color: white;
+    ${mobile3({ fontSize: "20px" })}
 `;
 
 const SimpleText = styled.p`
