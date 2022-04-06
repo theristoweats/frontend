@@ -41,4 +41,26 @@
     display:none !important
   }
 
+  .m-2-mmm2-{
+    width:100%
+  }
+
 }
+
+
+@media only screen and (max-width: 360px) {
+  
+  .m-m23-mobile{
+    display: none;
+  }
+
+}
+ 
+@media only screen and (max-width: 430px) {
+  
+  .m-m23-mobile-3{
+    display: none;
+  }
+
+}
+ 

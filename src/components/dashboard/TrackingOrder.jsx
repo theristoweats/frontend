@@ -5,11 +5,14 @@ import styled from "styled-components";
 import { orderDetails } from "../../actions/ordersActions";
 // import io from "socket.io-client";
 import axios from "axios";
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile3, mobile4  } from "../../responsive";
 
 const TrackingOrderMain = styled.div`
     display:flex;
     height:100vh;
     position:relative;
+    ${mobile1({ flexDirection:"column", height:"auto"})}
+
 `;
 
 const Left = styled.div`
@@ -17,6 +20,9 @@ const Left = styled.div`
     top:0;
     left:0;
     z-index:2;
+    ${desktop4({ position: "unset" })}
+    ${mobile1({ height:"auto", order:"1"})}
+
 `;
 
 const Right = styled.div`
@@ -45,6 +51,9 @@ const LeftInside = styled.div`
     width:300px;
     height:490px;
     border-radius:10px;
+    ${desktop4({ height:"100vh", marginTop:"0px", marginLeft:"0px", backgroundColor:"transparent", border:"none" })}
+    ${mobile1({ height:"auto", width:"100%"})}
+
 `;
 
 const LeftPro = styled.div`
@@ -67,6 +76,9 @@ const OrderProducts = styled.div`
     overflow-y: auto;
     height: 250px;
     margin-bottom:15px;
+    ${desktop4({ height:"200px"})}
+    ${desktop2({ height:"150px"})}
+    ${mobile1({  height:"340px" })}
 
     ::-webkit-scrollbar {
         width: 4px;
@@ -83,6 +95,8 @@ const OrderProducts = styled.div`
     ::-webkit-scrollbar-thumb:hover {    
         background: #555; 
     } 
+
+
 `;
 
 const OrderSingleProduct = styled.div`
@@ -191,6 +205,15 @@ const TextInfoNotAllowedMap = styled.div`
     padding-right: 15px;
     border-radius: 10px;
     margin-right: 40px;
+    ${mobile1({ width:"100%", 
+                paddingLeft:"0px", 
+                paddingRight:"0px", 
+                padding:"0px", 
+                marginRight:"0px",
+                marginTop:"97px",
+                borderRadius:"0px"
+            })}
+
 `;
 const TextInside = styled.span`
     font-family: GilroyLight; 
@@ -206,6 +229,9 @@ const CarrierBox = styled.div`
     border-top-right-radius: 10px;
     display:flex;
     align-items:center;
+    ${desktop4({  paddingTop: "97px"})}
+    ${mobile1({  paddingTop: "0px", width:"100%", borderRadius:"unset"})}
+
 `;
 
 const CarrierFirstText = styled.span`
@@ -231,6 +257,11 @@ const CarrierText = styled.div`
     padding-left: 10px;
     padding-bottom: 5px;
     padding-top: 5px;
+`;
+
+const ProTextNotAllowedMap = styled.div`
+    ${mobile1({  paddingTop: "10px", paddingLeft:"5%", paddingRight:"5%", paddingBottom:"10px"})}
+    
 `;
 
 // const socket = io.connect("http://localhost:5000");
@@ -410,14 +441,20 @@ const TrackingOrder = ({socket}) => {
                     {_orderStatus !== "ontheway" && _orderStatus !== "delivered" && (<MapNotAllowedToLook>
                         <InfoText>
                             <TextInfoNotAllowedMap>
-                                <TextInside>Штом доставувачот тргне на пат ќе можете да го следите на мапата.</TextInside></TextInfoNotAllowedMap>
+                                <ProTextNotAllowedMap>
+                                    <TextInside>Штом доставувачот тргне на пат ќе можете да го следите на мапата.</TextInside>
+                                </ProTextNotAllowedMap>
+                            </TextInfoNotAllowedMap>
                         </InfoText>
 
                     </MapNotAllowedToLook>) }
                     {_orderStatus === "delivered"  && (<MapNotAllowedToLook>
                         <InfoText>
                             <TextInfoNotAllowedMap>
-                                <TextInside>Нарачката е доставена, ви благодариме на довербата!</TextInside></TextInfoNotAllowedMap>
+                                <ProTextNotAllowedMap>
+                                    <TextInside>Нарачката е доставена, ви благодариме на довербата!</TextInside>
+                                </ProTextNotAllowedMap>
+                            </TextInfoNotAllowedMap>
                         </InfoText>
 
                     </MapNotAllowedToLook>) }

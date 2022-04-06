@@ -3,6 +3,7 @@ import mapStyles from "./mapStyles";
  
 import { useEffect, useState } from "react";
 import { addAddress, editAddress } from "../actions/addressesActions";
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile3, mobile4  } from "../responsive";
 
 const Modal = styled.div`
 position: fixed;
@@ -24,6 +25,8 @@ const InsideModalAsk = styled.div`
 
 const InsideModalAskPro = styled.div`
 display:flex;
+${mobile1({ flexDirection:"column", overflowX:"scroll", height:"100vh"})}
+
 `;  
 
 const MainTextModal = styled.h3`
@@ -85,13 +88,16 @@ const LeftModal = styled.div`
   width: 400px;
   background-color: #18191a;
   border-bottom-left-radius: 10px;
+  ${mobile1({ order:"1", width:"100%", borderRadius:"0px"})}
+
 `;
 
 
 const RightModal = styled.div`
-  width:600px
+  width:600px;
+  ${mobile1({ width:"100%"})}
+
 `;
- 
   
 
 

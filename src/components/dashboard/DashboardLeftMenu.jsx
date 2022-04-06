@@ -184,7 +184,7 @@ const DashboardLeftMenu = ({setUsername, page, setUser, setLoadingUserData}) =>{
             <LeftMenuMain>
                 <Links>
                     <SingleLink className={page === "dashboard" ? "targetcho" : ""}>
-                        <Link to="/dashboard" style={{textDecoration:"none"}}>
+                        <Link to="/dashboard" style={{textDecoration:"none"}} className="m-2-mmm2-">
                             <LinkInside>
                                 <LinkIcon src={DashboradIcon} />
                                 <TextLink>Кориснички панел</TextLink>
@@ -192,7 +192,7 @@ const DashboardLeftMenu = ({setUsername, page, setUser, setLoadingUserData}) =>{
                         </Link>
                     </SingleLink>
                     <SingleLink className={page === "orders" || page ==="orders_order" ? "targetcho" : ""}>
-                        <Link to="/dashboard/orders" style={{textDecoration:"none"}}>
+                        <Link to="/dashboard/orders" style={{textDecoration:"none"}} className="m-2-mmm2-">
                             <LinkInside>
                                 <LinkIcon src={OrdersIcon} />
                                 <TextLink>Мои нарачки</TextLink>
@@ -200,7 +200,7 @@ const DashboardLeftMenu = ({setUsername, page, setUser, setLoadingUserData}) =>{
                         </Link>
                     </SingleLink>
                     <SingleLink className={page === "addresses" ? "targetcho" : ""}>
-                        <Link to="/dashboard/addresses" style={{textDecoration:"none"}}>
+                        <Link to="/dashboard/addresses" style={{textDecoration:"none"}} className="m-2-mmm2-">
                             <LinkInside>
                                 <LinkIcon src={AddressIcon} />
                                 <TextLink>Мои адреси</TextLink>
@@ -223,8 +223,8 @@ const DashboardLeftMenu = ({setUsername, page, setUser, setLoadingUserData}) =>{
                             </LinkInside>
                         </Link>
                     </SingleLink> */}
-                    <SingleLink className={page === "profile" ? "targetcho" : ""}>
-                        <Link to="/dashboard/profile" style={{textDecoration:"none"}}>
+                    <SingleLink className={page === "profile" ? "targetcho" : ""} >
+                        <Link to="/dashboard/profile" style={{textDecoration:"none"}} className="m-2-mmm2-">
                             <LinkInside>
                                 <LinkIcon src={ProfileIcon} />
                                 <TextLink>Мој профил</TextLink>
@@ -233,7 +233,7 @@ const DashboardLeftMenu = ({setUsername, page, setUser, setLoadingUserData}) =>{
                     </SingleLink>
                     <br />
                     <SingleLink className="m---mobile">
-                        <Link to="#" style={{textDecoration:"none"}} onClick={(e)=>{logoutHandle(e)}}>
+                        <Link to="#" style={{textDecoration:"none"}} onClick={(e)=>{logoutHandle(e)}} className="m-2-mmm2-">
                             <LinkInside>
                                 {/* <LinkIcon src={ProfileIcon} /> */}
                                 <TextLink>Одјави се</TextLink>

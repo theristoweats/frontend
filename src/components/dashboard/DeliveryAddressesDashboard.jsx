@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";  
 import AddressDeleteIcon from "../../icons/delete.png";
 import AddressEditIcon from "../../icons/edit.png";
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile3, mobile4  } from "../../responsive";
+
    
 const SingleAddress = styled.div`
     
@@ -15,6 +17,9 @@ const SingleAddress = styled.div`
 
     margin-right: 15px;
     margin-bottom:15px;
+
+    ${mobile1({ width:"100%", marginRight:"0px"})}
+
 `;
 
 const InsideAddress = styled.div`

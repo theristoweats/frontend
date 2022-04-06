@@ -10,12 +10,15 @@ import DeleteAddressModal from "../DeleteAddressModal";
 import EditAddressModal from "../EditAddressModal";
 import AddNewAddressModal from "../addNewAddressModal";
 import Loading from "../../loadings/LoadingMyOrders";
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile3, mobile4  } from "../../responsive";
 
 const MainWrapper = styled.div``;
 
 const InsideWrapper = styled.div`
     margin-top: 100px;
     padding: 45px;
+    ${mobile1({ padding:"5%"})}
+
 `;
 
 const MainPageInfo = styled.div`

@@ -148,6 +148,7 @@ const SimpleText = styled.p`
     font-size: 14px;
     font-family: GilroyLight;
     margin-top: 10px;
+    ${mobile3({ fontSize: "14px" })}
 `;
 
 const DontationBar = styled.div`
@@ -158,6 +159,7 @@ const DatesDonation = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    ${mobile3({ marginBottom: "30px" })}
 `;
 
 const Date = styled.label` 
@@ -281,7 +283,7 @@ const DashboardHome = () =>{
                             <Donation>
                                 <Texts>
                                     <MainText>Заедно да усреќиме</MainText>
-                                    <SimpleText><b>The Ristow Eats</b> на секоја 10 нарачка одвојува 100 денари за донации. Месечно се собираат пари за донации со секоја 10-та нарачка.</SimpleText>
+                                    <SimpleText><b>The Ristow Eats</b> на секоја 10 нарачка донира 100 денари.</SimpleText>
                                 </Texts>
                                 <DontationBar>
                                     <DatesDonation>

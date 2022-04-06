@@ -16,6 +16,13 @@ export const desktop1 = (props) => {
   `;
 }
 
+export const desktop4 = (props) => {
+  return css`
+  @media only screen and (max-width: 1280px) {
+    ${props}
+  }
+`;
+}
 
 
 export const desktop2 = (props) => {
