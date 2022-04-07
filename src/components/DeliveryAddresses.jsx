@@ -4,13 +4,15 @@ import styled from "styled-components";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { loadAddresses } from "../actions/addressesActions";
 import LoadingCartItems from "../components/LoadingCartItems";
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile2, mobile3, mobile4  } from "../responsive";
 
 
 const Addresses = styled.div`
 margin-top: 20px;
 display: flex;
-width: 92%;
+width: 100%;
 padding-bottom: 15px;
+
 `;
 
 const SingleAddress = styled.div`
@@ -23,6 +25,8 @@ background-color: #161616;
 
 margin-right: 15px;
 cursor:pointer;
+${mobile2({ width: "96%"})}
+
 `;
 
 const SingleAddressInside = styled.div`

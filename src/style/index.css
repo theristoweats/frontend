@@ -99,8 +99,20 @@ body{
     border:1px solid #e41e3f !important;
 }
 
+
+
+.m-mldp-pdp-s-s{
+    width:200px;
+    height: 220px;
+}
+
 @media only screen and (max-width: 870px) {
     ._Thloflop{
         width: 90%;
     }
-}
+    .m-mldp-pdp-s-s{
+        width:150px;
+        height: 130px;
+    }
+} 
+

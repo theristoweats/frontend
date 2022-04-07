@@ -15,7 +15,8 @@ import { listProducts } from '../actions/productActions';
 import iconSelMenu from "../icons/down.png";
 import Loading from "../components/Loading";
 import ErrorProducts from "../components/ErrorProducts";
-import { mobile, desktop1, desktop } from "../responsive";
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile2, mobile3, mobile4  } from "../responsive";
+
 
 
 

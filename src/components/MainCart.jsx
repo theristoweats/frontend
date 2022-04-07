@@ -18,11 +18,12 @@ import EditAddressModal from "./EditAddressModal";
 import { placeOrder } from "../actions/ordersActions";
 import LoadingInButton from "../loadings/LoadingInButton";
 import { useNavigate } from 'react-router-dom';
-import { mobile, desktop1 } from "../responsive";
 import AAddressICON from "../icons/address.png";
 import CCCCCIcon from "../icons/contract.png";
 import WaletIcon from "../icons/wallet.png";
 import DiscountIcon from "../icons/discounts.png";
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile2, mobile3, mobile4  } from "../responsive";
+
 
 
 const Container = styled.div` 
@@ -35,6 +36,7 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
     width:93%;
+    
 `;
   
 
@@ -102,7 +104,10 @@ const AddressesLoad = styled.div`
     margin-left: 10px;
     padding-top: 8px;
     flex-direction: column;
-    width: 100%;
+    width: 93%;
+    ${mobile1({ width: "90%" })}
+    ${mobile3({ width: "86%" })}
+
 `;
 
 const TitleText = styled.span`
@@ -133,12 +138,16 @@ const PaymentMethodLoad = styled.div`
 const PaymentMethods = styled.div`    
     display: flex;
     align-items: center;
+    ${mobile3({ flexDirection: "column", alignItems:"flex-start" })}
+
 `;
 
 const PaymentMethod = styled.div`
     margin-right: 20px;
     display: flex;
     align-items: center;
+    ${mobile3({ marginLeft: "0px", marginBottom:"15px", alignItems:"flex-start" })}
+
 `;
 
 const PaymentMethodLabel = styled.label`

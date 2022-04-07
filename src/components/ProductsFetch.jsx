@@ -11,8 +11,8 @@ import cartIcon from "../icons/shopping-cart.png";
 import { useCookies } from "react-cookie";
 import LoadingAddProductCart from "../loadings/LoadingAddProductCart";
 import ErrorAddProductCart from "../loadings/ErrorAddProductCart";
-import { mobile, desktop1 } from "../responsive";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile2, mobile3, mobile4  } from "../responsive";
 
 // import {
 //     cartAddToCartReducer
@@ -39,12 +39,16 @@ const Main = styled.div`
     flex-direction: column;
     padding-bottom: 10px;
 
+    ${mobile({ height: "130px" })}
+
+
 `;
 
 const Image = styled.img`
     width: 200px;
     height: 220px;
     object-fit: contain;
+
 `;
 
 const Name = styled.label`
@@ -53,6 +57,8 @@ const Name = styled.label`
     margin-top: 15px;
     margin-bottom: 10px;
     font-size: 14px;
+    ${mobile({ marginTop: "0px" })}
+
 `;
 
 const Info = styled.div`
@@ -67,6 +73,8 @@ const InfoWrapper = styled.div`
     display: flex;
     align-items: center;
     height: 20px;
+    ${mobile({ height: "5px" })}
+
 `;
 
 const Price = styled.span`
@@ -74,12 +82,16 @@ const Price = styled.span`
     font-weight: bold;
     font-family: GilroyLight;
     font-size: 16px;
+    ${mobile({ fontSize: "14px" })}
+
 `;
 
 const AddToCartText = styled.span`
     color: white;
     font-family: GilroyLight;
     font-size:13px;
+    ${mobile({ display: "none" })}
+
 `;
 
 const PriceInfo = styled.div` 
@@ -95,6 +107,8 @@ const AddToCart = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    ${mobile({ width: "30px" })}
+
 `;
 
 const AddToCartIcon = styled.img`
@@ -102,6 +116,8 @@ const AddToCartIcon = styled.img`
     height: 15px; 
     filter: brightness(0) invert(1); 
     margin-left: 5px;
+    ${mobile({ marginLeft: "0px" })}
+
 `;
 
 
@@ -118,7 +134,7 @@ const ProductsLoadMain = styled.div`
 
 const Button = styled.a`
     text-decoration:none;
-    ${mobile({ width: "100%" })}
+    ${mobile({ width: "48%", marginRight:"2%" })}
 
 `;
 
@@ -404,11 +420,10 @@ const ProductsFetch = ({products}) => {
                         
                         <LazyLoadImage
                         effect="blur"
-                        // alt={image.alt}
-                        height="220px"
+                        // alt={image.alt} 
+                        className="m-mldp-pdp-s-s"
                         style={{objectFit:"contain"}}
-                        src={item.img}
-                        width="200px" />
+                        src={item.img}  />
                         <Name>{item.title}</Name>
                     </Main>
                     <Info>
