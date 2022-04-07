@@ -45,7 +45,7 @@ font-size:14px;
 const ButtonsLoadHere = styled.div`
 display:flex;  
 margin-top:45px;
-${mobile1({ paddingBottom:"20px"})}
+${mobile1({ paddingBottom:"30px", marginTop:"15px"})}
 `;
 
 const SingleButton = styled.div`
