@@ -161,7 +161,9 @@ const AddNewAddressModal = ({setAddNewAddress, setNewAddress, setDeliveryAddress
     useEffect(() => {
       window.initMap();
     }, []); 
- 
+    const handleSubmit = (e)=>{
+      e.preventDefault();
+    }
 
     return (
       <Modal>
@@ -169,45 +171,47 @@ const AddNewAddressModal = ({setAddNewAddress, setNewAddress, setDeliveryAddress
                 <InsideModalAskPro>
                     <LeftModal>
                       <LeftModalInside>
-                        
-                          <Input type="hidden" id="address_lat"/>
-                          <Input type="hidden" id="address_lng"/>
-                          
-                          <MainTextModal>Додади нова адреса</MainTextModal>
-                          <SecoundText>За да изберете ја изберете вашата локација. Придвижете го пинот од мапата десно.</SecoundText>   
-                          
-                          <InputAddresses style={{marginTop:"25px"}}>
-                            <InputText>Адреса</InputText>
-                            <Input type="text" placeholder="Христо татарчев" id="autoComplement"/>
-                          </InputAddresses>
+                        <form onSubmit={(e) => handleSubmit(e)}>
+                            <Input type="hidden" id="address_lat"/>
+                            <Input type="hidden" id="address_lng"/>
+                            
+                            <MainTextModal>Додади нова адреса</MainTextModal>
+                            <SecoundText>За да изберете ја изберете вашата локација. Придвижете го пинот од мапата десно.</SecoundText>   
+                            
+                            <InputAddresses style={{marginTop:"25px"}}>
+                              <InputText>Адреса</InputText>
+                              <Input type="text" placeholder="Христо татарчев" id="autoComplement"/>
+                            </InputAddresses>
 
-                          <InputAddresses>
-                            <InputText>Кратко име</InputText>
-                            <Input type="text" placeholder="Кај швалерката" id="addressShortName" />
-                          </InputAddresses>
+                            <InputAddresses>
+                              <InputText>Кратко име</InputText>
+                              <Input type="text" placeholder="Кај швалерката" id="addressShortName" />
+                            </InputAddresses>
 
-                          <InputAddresses>
-                            <InputText>Детален опис</InputText>
-                            <Input type="text" placeholder="Пред зградата има црвен велоспед. Качи се по лифтот од лево кон десно."  id="addressLongDescription" />
-                          </InputAddresses>
+                            <InputAddresses>
+                              <InputText>Детален опис</InputText>
+                              <Input type="text" placeholder="Пред зградата има црвен велоспед. Качи се по лифтот од лево кон десно."  id="addressLongDescription" />
+                            </InputAddresses>
 
-                          <ButtonsLoadHere>
-                              <SingleButton>
-                                  <ButtonLink href="#" onClick={(e)=>{handleSaveNewAddress(e)}}>
-                                      <SingleButtonInside>
-                                          <TextMainY>Зачувај</TextMainY>
-                                      </SingleButtonInside>
-                                  </ButtonLink>
-                              </SingleButton>
-                              <SingleButton>
-                                  <ButtonLink href="#" onClick={(e)=>{handleCancel(e)}}>
-                                      <SingleButtonInside>
-                                          <TextMainY>Откажи</TextMainY>
-                                      </SingleButtonInside>
-                                  </ButtonLink>
-                              </SingleButton>
-                          </ButtonsLoadHere>
-                        </LeftModalInside>
+                            <ButtonsLoadHere>
+                                <SingleButton>
+                                    <ButtonLink href="#" onClick={(e)=>{handleSaveNewAddress(e)}}>
+                                        <SingleButtonInside>
+                                            <TextMainY>Зачувај</TextMainY>
+                                        </SingleButtonInside>
+                                    </ButtonLink>
+                                </SingleButton>
+                                <SingleButton>
+                                    <ButtonLink href="#" onClick={(e)=>{handleCancel(e)}}>
+                                        <SingleButtonInside>
+                                            <TextMainY>Откажи</TextMainY>
+                                        </SingleButtonInside>
+                                    </ButtonLink>
+                                </SingleButton>
+                            </ButtonsLoadHere>
+                        </form>
+
+                          </LeftModalInside>
                     </LeftModal>
                     <RightModal>
                       <MapLadHere>
