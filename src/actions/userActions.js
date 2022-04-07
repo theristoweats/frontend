@@ -35,7 +35,8 @@ export const userCheck = async (userData, setUsername, setUser, setLoadingUserDa
 
 
 export const register = async (dispatch, user, navigate, setUser, setLoadingUserData, setEmailError, setRegisterLoading, setUsername) => {    
-  // setLoadingUserData(true);
+  dispatch(loginStart());
+      // setLoadingUserData(true);
       // setLoadingUserData(true); 
   // dispatch(loginStart());
   // setRegisterLoading(true);
@@ -45,7 +46,6 @@ export const register = async (dispatch, user, navigate, setUser, setLoadingUser
       // setRegisterLoading(false);
       localStorage.setItem('user', JSON.stringify(res.data));
       navigate("/");
-      dispatch(loginStart());
       dispatch(loginSuccess(JSON.stringify(res.data)));
       // setUser(res.data);
       // setUsername(res.data.others.fullname);
