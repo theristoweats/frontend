@@ -104,7 +104,7 @@ const RightModal = styled.div`
 
 const LeftModalInside = styled.div`
   padding:30px;
-  ${mobile1({ height:"65vh"})}
+  ${mobile1({ height:"auto"})}
 `;
 
 const InputAddresses = styled.div`
