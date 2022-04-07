@@ -80,6 +80,8 @@ font-size:14px;
 const MapLadHere = styled.div`
     height:500px; 
     width:100%;
+    ${mobile1({ width:"100%", height:"100vh"})}
+
 `;
 
 const LeftModal = styled.div`
@@ -95,7 +97,7 @@ const LeftModal = styled.div`
 
 const RightModal = styled.div`
   width:600px;
-  ${mobile1({ width:"100%"})}
+  ${mobile1({ width:"100%", height:"100vh"})}
 
 `;
   
@@ -103,7 +105,7 @@ const RightModal = styled.div`
 
 const LeftModalInside = styled.div`
   padding:30px;
-  ${mobile1({ height:"65vh"})}
+  ${mobile1({ height:"auto"})}
 `;
 
 const InputAddresses = styled.div`
