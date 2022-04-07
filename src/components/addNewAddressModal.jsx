@@ -15,12 +15,16 @@ top:0;
 display: grid;
 place-items: center;
 left:0;
+${mobile1({ height:"100vh"})}
+
 `;
 
 const InsideModalAsk = styled.div`
 // width:750px; 
 // border-left:5px solid #e41e3f;
 // border-radius:10px
+${mobile1({ height:"100vh"})}
+
 `;
 
 const InsideModalAskPro = styled.div`
