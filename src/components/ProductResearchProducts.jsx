@@ -16,7 +16,7 @@ import iconSelMenu from "../icons/down.png";
 import Loading from "../components/Loading";
 import ErrorProducts from "../components/ErrorProducts";
 import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile2, mobile3, mobile4  } from "../responsive";
-
+import FilterIcon from "../icons/filter.png";
 
 
 
@@ -39,6 +39,8 @@ const ProductsLoadAndFilter = styled.div`
     display: flex;
     justify-content: center;
     padding-top: 130px;
+    ${mobile({ paddingTop:"110px"})} 
+
 `; 
 
 const FullScreenLoad = styled.div`
@@ -50,7 +52,7 @@ const FullScreenLoad = styled.div`
 
 const LeftFilter = styled.div`
     width: 25%;
-    ${mobile({ width: "100%", display:"none" })}
+    ${mobile({ width: "100%", display:"none"})}
 `;
 
 const FilterMain = styled.div`
@@ -171,7 +173,7 @@ const HeaderInfoTextProducts = styled.h1`
     color: white;
     font-size: 17px;
     font-family: GilroyLight; 
-    ${mobile({ marginTop:"10px", marginBottom:"15px" })}
+    ${mobile({ marginTop:"10px", marginBottom:"25px", fontSize:"20px" })}
 `;
 
 const ChooseProductsType = styled.div`
@@ -186,7 +188,7 @@ const ChooseSpan = styled.span`
     font-size: 14px;
     font-family: GilroyLight; 
     margin-right:10px; 
-    ${mobile({ display:"flex",flex:"1" })} 
+    ${mobile({ display:"flex",flex:"1", fontSize:"13px", marginBottom:"5px" })} 
 `;
 
 const FiltersChoosed = styled.div`
@@ -352,6 +354,41 @@ const IconsFlexPr = styled.div`
     border-bottom-right-radius: 10px;
     width: 35px;
     border-top-right-radius: 10px;
+`;
+
+const FiltersInfo = styled.div`
+    ${desktop({ display:"none"})} 
+    padding-top:15px;
+    order:1;
+`;
+
+const FiltersOpen = styled.button`
+    outline:none;
+    border:none;
+    background-color:#242526;
+    font-family: GilroyLight; 
+    color:white;
+    width:40px;
+    border-radius:10px;
+    height:40px;
+    font-size:13px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`;
+
+const TextFiltersOpen = styled.span``;
+
+const IconOpenFilters = styled.img`
+    width:22px;
+    height:22px;
+    margin-bottom:-3px;
+`;
+
+const ForMobile = styled.div`
+    display:flex;
+    align-items:center;
+    ${mobile({ display:"flex", flexDirection:"column", alignItems:"flex-start", flex:"1"})} 
 `;
 
 const ProductResearch = () => { 
@@ -582,26 +619,34 @@ const ProductResearch = () => {
                                         <HeaderInfoTextProducts>Пронајдени {totalProducts} производи</HeaderInfoTextProducts>
                                     </HeaderInfoProduct>
                                     <ChooseProductsType>
-                                        <ChooseSpan>Подреди по:</ChooseSpan>                                              
+                                        
+                                        <FiltersInfo>
+                                            <FiltersOpen>
+                                                <TextFiltersOpen><IconOpenFilters src={FilterIcon}/></TextFiltersOpen>
+                                            </FiltersOpen>
+                                        </FiltersInfo>
+                                        <ForMobile>
+                                            <ChooseSpan>Подреди по:</ChooseSpan>                                              
 
-                                        <SelectedMenuPro>
+                                            <SelectedMenuPro>
 
-                                            <select
-                                                value={order}
-                                                onChange={(e) => {
-                                                navigate(getFilterUrl({ order: e.target.value }));
-                                                }}
-                                                className="select-pro-bro"
-                                            >
-                                                <option value="cheapest">Најефтини</option>
-                                                <option value="expensives">Најскапи</option>
-                                            </select>
-                                            <IconsFlexPr>
-                                                <IconSelectMenu src={iconSelMenu}></IconSelectMenu>
-                                            </IconsFlexPr>
+                                                <select
+                                                    value={order}
+                                                    onChange={(e) => {
+                                                    navigate(getFilterUrl({ order: e.target.value }));
+                                                    }}
+                                                    className="select-pro-bro"
+                                                >
+                                                    <option value="cheapest">Најефтини</option>
+                                                    <option value="expensives">Најскапи</option>
+                                                </select>
+                                                <IconsFlexPr>
+                                                    <IconSelectMenu src={iconSelMenu}></IconSelectMenu>
+                                                </IconsFlexPr>
 
 
-                                        </SelectedMenuPro>
+                                            </SelectedMenuPro>
+                                        </ForMobile>
 
                                     </ChooseProductsType>
                                 </ProductsLoadedInfo>
