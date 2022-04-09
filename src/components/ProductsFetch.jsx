@@ -12,7 +12,8 @@ import { useCookies } from "react-cookie";
 import LoadingAddProductCart from "../loadings/LoadingAddProductCart";
 import ErrorAddProductCart from "../loadings/ErrorAddProductCart";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile2, mobile3, mobile4  } from "../responsive";
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, desktop10, desktop11,
+         mobile1, mobile2, mobile3, mobile4, mobile11  } from "../responsive";
 
 // import {
 //     cartAddToCartReducer
@@ -27,6 +28,8 @@ const Product = styled.div`
     margin-right: 10px;
     margin-bottom: 10px;
     ${mobile({ width: "100%" })}
+    ${desktop10({ width: "100%" })}
+    
 `;
 
 const Main = styled.div`
@@ -134,9 +137,12 @@ const ProductsLoadMain = styled.div`
 
 const Button = styled.a`
     text-decoration:none;
-    ${mobile({ width: "48%", marginRight:"2%" })}
-
-`;
+    ${mobile({ width: "32% !important", marginRight:"2%" })}
+    ${desktop10({ width: "32% ", marginRight:"1%" })}
+    ${desktop11({ width: "49%", marginRight:"1%" })}
+    ${mobile11({ width: "48% !important", marginRight:"2%" })}
+    
+`;  
 
 
 

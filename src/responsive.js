@@ -34,6 +34,26 @@ export const desktop2 = (props) => {
 }
 
 
+export const desktop10 = (props) => {
+  return css`
+  @media only screen and (max-width: 1344px) {
+    ${props}
+  }
+`;
+}
+
+
+export const desktop11 = (props) => {
+  return css`
+  @media only screen and (max-width: 1121px) {
+    ${props}
+  }
+`;
+}
+
+
+
+
 export const desktop3 = (props) => {
   return css`
   @media only screen and (max-width: 1000px) {
@@ -62,6 +82,15 @@ export const mobile3 = (props) => {
 export const mobile10 = (props) => {
   return css`
   @media only screen and (max-width: 500px) {
+    ${props}
+  }
+`;
+}
+
+
+export const mobile11 = (props) => {
+  return css`
+  @media only screen and (max-width: 580px) {
     ${props}
   }
 `;
