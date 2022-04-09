@@ -99,7 +99,31 @@ body{
     border:1px solid #e41e3f !important;
 }
 
+.d-lep-pela{
+    display: flex !important;
+    flex-direction: column;
+}
 
+
+.d--s-alldps-s{
+    width:90% !important;
+    background-color: #18191a;
+    border-radius: 10px;
+}
+
+.f---d--s-alldps-s{
+    width:100%;
+    height:100vh;
+    z-index:999;
+    background-color:#000000cf;
+    position:fixed;
+    top:0;
+    left:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
 
 .m-mldp-pdp-s-s{
     width:200px;

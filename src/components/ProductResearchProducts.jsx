@@ -51,7 +51,7 @@ const FullScreenLoad = styled.div`
 `;
 
 const LeftFilter = styled.div`
-    width: 25%;
+    width: 100%%;
     ${mobile({ width: "100%", display:"none"})}
 `;
 
@@ -59,12 +59,14 @@ const FilterMain = styled.div`
     width: 100%; 
     background-color: #242526;
     border-radius: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 5px; 
     margin-bottom: 15px;
+    ${mobile({ marginBottom: "0", borderRadius:"0px", backgroundColor:"transparent", borderBottom:"1px solid #050505"})}
 `;
 
 const FilterInside = styled.div`
-    padding:20px;
+    padding:20px;  
+    ${mobile({ paddingBottom: "10px"})}
 `;
 
 const FilterName = styled.label`
@@ -391,6 +393,54 @@ const ForMobile = styled.div`
     ${mobile({ display:"flex", flexDirection:"column", alignItems:"flex-start", flex:"1"})} 
 `;
 
+const FiltersForMobileProD = styled.div` 
+    width:100%;
+
+`;
+
+const DafFiltersForMobileProD = styled.div`
+    ${mobile({ width:"100%"})}  
+    width:25%;
+`;
+
+const CloseFilters = styled.button`
+    width:35px;
+    outline:none;
+    border:none;
+    cursor:pointer;
+    height:35px;
+    background-color:#3a3b3c;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+`;
+
+const IconCloseFilters = styled.span`
+    color:white;
+    font-family: GilroyLight; 
+    font-size:15px;
+    margin-bottom:-1px;
+    margin-left:-1px;
+`;
+
+const FilterChooseFilterTexts = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:space-between; 
+    padding:20px;
+    padding-bottom:10px;
+    border-bottom: 1px solid #050505;
+    ${desktop({ display:"none"})} 
+`;
+
+const FiltersTextInfo = styled.span`
+    color:white;
+    font-family: GilroyLight; 
+    font-size:15px;
+
+`;
+
 const ProductResearch = () => { 
   const navigate = useNavigate(); 
 //   const setClickedSort = createRef<HTMLSelectElement>();
@@ -405,6 +455,8 @@ const ProductResearch = () => {
   const handleClickPrices = () => {
     if( (minPricePro > 0 && maxPricePro > 0) && (minPricePro !== 0 && maxPricePro !== 0)){
         navigate(getFilterUrl({ min: minPricePro, max:maxPricePro, page: 1 }));
+        __SET__HANDLE_FILTERS_MOBILE(false); 
+
     }
 
   };
@@ -510,18 +562,35 @@ const ProductResearch = () => {
   const handleClickSearch = () => {
     if(searchProduct !== '' && searchProduct !== undefined){
         navigate(getFilterUrl({ name: searchProduct, page:1 }));
+        __SET__HANDLE_FILTERS_MOBILE(false); 
+
 
     }
   };
 
   const handleClick = (selectedVal) => {
     navigate(getFilterUrl({ shown: selectedVal, page:1 }));
+    __SET__HANDLE_FILTERS_MOBILE(false); 
     // console.log(selectedVal);
   };
   
   //////////////////////////////////////////
 
    
+  const [__HANDLE_FILTERS_MOBILE, __SET__HANDLE_FILTERS_MOBILE] = useState(false); 
+
+  const _mobileFiltersOpen = (e) =>{
+    e.preventDefault();
+    __SET__HANDLE_FILTERS_MOBILE(true);
+  }
+
+  const handleCloseFilters = (e) => {
+      
+    e.preventDefault();
+    __SET__HANDLE_FILTERS_MOBILE(false);
+  }
+
+  //////////////////////////////////////////
    
   return (
       <>
@@ -534,82 +603,91 @@ const ProductResearch = () => {
         <Wrapper> 
             <ProductsLoadAndFilter>
                 <FullScreenLoad>
-                    <LeftFilter>
-                        <FilterMain>
-                            <FilterInside>
-                                <FilterName>Прикажани производи</FilterName> 
- 
-                                <PriceRange>
-                                    <PriceRangeInsideMin>
-                                        <MinPrice>Избери број на резултати</MinPrice>
-                                    </PriceRangeInsideMin> 
-                                </PriceRange>  
+                    <DafFiltersForMobileProD className={__HANDLE_FILTERS_MOBILE && "f---d--s-alldps-s"}>
+                        <FiltersForMobileProD className={__HANDLE_FILTERS_MOBILE && "d--s-alldps-s"}>
+                            <LeftFilter className={__HANDLE_FILTERS_MOBILE && "d-lep-pela"}>
+                                <FilterMain>
+                                    <FilterChooseFilterTexts>
+                                        <FiltersTextInfo>Филтри</FiltersTextInfo>
+                                        <CloseFilters onClick={(e) => handleCloseFilters(e)}>
+                                            <IconCloseFilters>X</IconCloseFilters>
+                                        </CloseFilters> 
+                                    </FilterChooseFilterTexts>
+                                    <FilterInside>
+                                        <FilterName>Прикажани производи</FilterName> 
+        
+                                        <PriceRange>
+                                            <PriceRangeInsideMin>
+                                                <MinPrice>Избери број на резултати</MinPrice>
+                                            </PriceRangeInsideMin> 
+                                        </PriceRange>  
 
-                                <ChooseNumberResults> 
-                                    <SingleNumResultsShown className={Number(shown) === 12 ? "targetShownProducts" : "" } onClick={() => handleClick(12)}>12</SingleNumResultsShown>
-                                    <SingleNumResultsShown className={Number(shown) === 24 ? "targetShownProducts" : "" } onClick={() => handleClick(24)}>24</SingleNumResultsShown>
-                                    <SingleNumResultsShown className={Number(shown) === 36 ? "targetShownProducts" : "" } onClick={() => handleClick(36)}>36</SingleNumResultsShown>
-                                </ChooseNumberResults>
-                                 
+                                        <ChooseNumberResults> 
+                                            <SingleNumResultsShown className={Number(shown) === 12 ? "targetShownProducts" : "" } onClick={() => handleClick(12)}>12</SingleNumResultsShown>
+                                            <SingleNumResultsShown className={Number(shown) === 24 ? "targetShownProducts" : "" } onClick={() => handleClick(24)}>24</SingleNumResultsShown>
+                                            <SingleNumResultsShown className={Number(shown) === 36 ? "targetShownProducts" : "" } onClick={() => handleClick(36)}>36</SingleNumResultsShown>
+                                        </ChooseNumberResults>
+                                        
 
-                            </FilterInside>
-                        </FilterMain>
-                        <FilterMain>
-                            <FilterInside>
-                                <FilterName>Пребарај продукт</FilterName> 
- 
-                                <PriceRange>
-                                    <PriceRangeInsideMin>
-                                        <MinPrice>Име на продукт</MinPrice>
-                                    </PriceRangeInsideMin> 
-                                </PriceRange>
- 
-                                <SarchProductBar>
-                                    <SarchProductBarInside>
-                                         
-                                        <SarchProductBarInput type="text" placeholder="Свежи печурки..."  onChange={(e)=>setSearchProduct(e.target.value)}  defaultValue={name !=='all' ? name : '' }/> 
-                                    </SarchProductBarInside>
-                                </SarchProductBar>
-                                <ButtonFilterPrices onClick={handleClickSearch}>
-                                    Пребарај
-                                </ButtonFilterPrices>
-                                 
+                                    </FilterInside>
+                                </FilterMain>
+                                <FilterMain>
+                                    <FilterInside>
+                                        <FilterName>Пребарај продукт</FilterName> 
+        
+                                        <PriceRange>
+                                            <PriceRangeInsideMin>
+                                                <MinPrice>Име на продукт</MinPrice>
+                                            </PriceRangeInsideMin> 
+                                        </PriceRange>
+        
+                                        <SarchProductBar>
+                                            <SarchProductBarInside>
+                                                
+                                                <SarchProductBarInput type="text" placeholder="Свежи печурки..."  onChange={(e)=>setSearchProduct(e.target.value)}  defaultValue={name !=='all' ? name : '' }/> 
+                                            </SarchProductBarInside>
+                                        </SarchProductBar>
+                                        <ButtonFilterPrices onClick={handleClickSearch}>Пребарај</ButtonFilterPrices>
+                                        
 
-                            </FilterInside>
-                        </FilterMain>
-                        <FilterMain> 
- 
-                            <FilterInside>
-                                <FilterName>Цена</FilterName>
-                                <PriceRange>
-                                    <PriceRangeInsideMin>
-                                        <MinPrice>Најмала</MinPrice>
-                                    </PriceRangeInsideMin>
-                                    <PriceRangeInsideMax>
-                                        <MaxPrice>Најголема</MaxPrice>
-                                    </PriceRangeInsideMax>
-                                </PriceRange>
+                                    </FilterInside>
+                                </FilterMain>
+                                <FilterMain> 
+        
+                                    <FilterInside>
+                                        <FilterName>Цена</FilterName>
+                                        <PriceRange>
+                                            <PriceRangeInsideMin>
+                                                <MinPrice>Најмала</MinPrice>
+                                            </PriceRangeInsideMin>
+                                            <PriceRangeInsideMax>
+                                                <MaxPrice>Најголема</MaxPrice>
+                                            </PriceRangeInsideMax>
+                                        </PriceRange>
 
-                                <PriceRange>
-                                    <PriceRangeInsideMinAc>
-                                        <MinPriceAc type="text" placeholder="0 ден." onChange={(e)=>setMinPrice(e.target.value)} defaultValue={ min > 0 ? min : '' }/>
-                                    </PriceRangeInsideMinAc>
-                                    <PriceRangeInsideMaxAc>                                        
-                                        <MaxPriceAc type="text" placeholder="0 ден." onChange={(e)=>setMaxPrice(e.target.value)} defaultValue={ max > 0 ? max : '' }/>
-                                    </PriceRangeInsideMaxAc>
-                                </PriceRange>
+                                        <PriceRange>
+                                            <PriceRangeInsideMinAc>
+                                                <MinPriceAc type="text" placeholder="0 ден." onChange={(e)=>setMinPrice(e.target.value)} defaultValue={ min > 0 ? min : '' }/>
+                                            </PriceRangeInsideMinAc>
+                                            <PriceRangeInsideMaxAc>                                        
+                                                <MaxPriceAc type="text" placeholder="0 ден." onChange={(e)=>setMaxPrice(e.target.value)} defaultValue={ max > 0 ? max : '' }/>
+                                            </PriceRangeInsideMaxAc>
+                                        </PriceRange>
 
-                                <ButtonFilterPrices onClick={handleClickPrices}>
-                                    Филтрирај
-                                </ButtonFilterPrices>
-                                 
+                                        <ButtonFilterPrices onClick={handleClickPrices}>
+                                            Филтрирај
+                                        </ButtonFilterPrices>
+                                        
 
-                            </FilterInside>
+                                    </FilterInside>
 
-                            
-                        </FilterMain>
+                                    
+                                </FilterMain>
 
-                    </LeftFilter>
+                            </LeftFilter>
+                        </FiltersForMobileProD>
+                    
+                    </DafFiltersForMobileProD>
 
                     <RightProductsLoad>
                         <ProductsLoadInside>
@@ -621,7 +699,7 @@ const ProductResearch = () => {
                                     <ChooseProductsType>
                                         
                                         <FiltersInfo>
-                                            <FiltersOpen>
+                                            <FiltersOpen onClick={(e) => _mobileFiltersOpen(e)}>
                                                 <TextFiltersOpen><IconOpenFilters src={FilterIcon}/></TextFiltersOpen>
                                             </FiltersOpen>
                                         </FiltersInfo>
