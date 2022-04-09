@@ -15,7 +15,7 @@ import { listProducts } from '../actions/productActions';
 import iconSelMenu from "../icons/down.png";
 import Loading from "../components/Loading";
 import ErrorProducts from "../components/ErrorProducts";
-import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile2, mobile3, mobile4  } from "../responsive";
+import { mobile, desktop1, desktop, desktop2, desktop3, desktop4, mobile1, mobile2, mobile3, mobile4, mobile10  } from "../responsive";
 import FilterIcon from "../icons/filter.png";
 
 
@@ -74,6 +74,8 @@ const FilterName = styled.label`
     color: white;
     font-family: GilroyLight;
     font-weight: bold;  
+    ${mobile({ fontSize:"15px"})}
+
 `;
 
 const PriceRange = styled.div`
@@ -105,6 +107,8 @@ const MinPrice = styled.span`
     color: #c4c4c4;
     font-size: 14px;
     font-family: GilroyLight; 
+    ${mobile({ fontSize:"13px"})} 
+
      
 `;
 
@@ -112,6 +116,7 @@ const MaxPrice = styled.span`
     color: #c4c4c4;
     font-size: 14px;
     font-family: GilroyLight; 
+    ${mobile({ fontSize:"13px"})} 
 `;
 
 const MinPriceAc = styled.input`
@@ -129,6 +134,7 @@ const MinPriceAc = styled.input`
     border:1px solid #404040;
     padding-left:10px;
     padding-right:10px;
+    ${mobile({ fontSize:"12px"})} 
 `;
 
 const MaxPriceAc = styled.input`
@@ -146,6 +152,7 @@ const MaxPriceAc = styled.input`
     border:1px solid #404040;
     padding-left:10px;
     padding-right:10px;
+    ${mobile({ fontSize:"12px"})} 
 `;
 
 const RightProductsLoad = styled.div` 
@@ -196,6 +203,9 @@ const ChooseSpan = styled.span`
 const FiltersChoosed = styled.div`
     display: flex;
     margin-top:20px;
+    ${mobile1({ display:"flex", flexDirection:"row" })} 
+    ${mobile10({ display:"flex", flexDirection:"column" })} 
+
 `;
 
 const SingleFilterChoosed = styled.div` 
@@ -205,6 +215,8 @@ const SingleFilterChoosed = styled.div`
     border-radius: 10px;
     height: 40px;
     margin-right: 10px;
+    ${mobile10({ marginBottom:"10px", marginRight:"0px" })} 
+
 `;
 
 const SingleFilterChoosedInside = styled.div`
@@ -242,6 +254,7 @@ const DeleteFilter = styled.button`
     background-color: #353637;
     height: 40px;
     cursor: pointer; 
+    ${mobile10({ right:"0", position:"absolute", marginRight:"13px" })} 
 `;
 
 const DeleteFilterIcon = styled.label`
@@ -281,6 +294,8 @@ const ButtonFilterPrices = styled.button`
     background:transparent;
     border: 1px solid #404040;
     color: white;
+    ${mobile({ fontSize:"13px", height:"35px"})} 
+
 `;
  
 
@@ -306,11 +321,15 @@ const SarchProductBarInput = styled.input`
     border:1px solid #404040;
     padding-left:10px;
     padding-right:10px;
+    ${mobile({ fontSize:"13px"})} 
+
 `;
 
 const ChooseNumberResults = styled.div`
     display:flex;
     margin-top:15px;
+    ${mobile({ marginTop:"5px"})}
+
 `;
 
 const SingleNumResultsShown = styled.button`
@@ -328,6 +347,8 @@ const SingleNumResultsShown = styled.button`
     font-size:14px;
     border:1px solid #404040;
     margin-right:10px;
+    ${mobile({ fontSize:"12px", marginTop:"9px"})} 
+
 `;
 
 const IconSelectMenu = styled.img`
@@ -376,8 +397,10 @@ const FiltersOpen = styled.button`
     font-size:13px;
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:center; 
+
 `;
+
 
 const TextFiltersOpen = styled.span``;
 
@@ -429,6 +452,7 @@ const FilterChooseFilterTexts = styled.div`
     align-items:center;
     justify-content:space-between; 
     padding:20px;
+    padding-top:15px;
     padding-bottom:10px;
     border-bottom: 1px solid #050505;
     ${desktop({ display:"none"})} 
@@ -438,7 +462,18 @@ const FiltersTextInfo = styled.span`
     color:white;
     font-family: GilroyLight; 
     font-size:15px;
+    font-weight:bold;
+`;
 
+const FiltersTextWithIcon = styled.div`
+    display:flex;
+    align-items:center;
+`;
+
+const FiltersTextIcon = styled.img`
+    width:20px;
+    height:20px;
+    margin-right:10px;
 `;
 
 const ProductResearch = () => { 
@@ -608,7 +643,10 @@ const ProductResearch = () => {
                             <LeftFilter className={__HANDLE_FILTERS_MOBILE && "d-lep-pela"}>
                                 <FilterMain>
                                     <FilterChooseFilterTexts>
-                                        <FiltersTextInfo>Филтри</FiltersTextInfo>
+                                        <FiltersTextWithIcon>
+                                            <FiltersTextIcon src={FilterIcon}/>
+                                            <FiltersTextInfo>Филтри</FiltersTextInfo>
+                                        </FiltersTextWithIcon>
                                         <CloseFilters onClick={(e) => handleCloseFilters(e)}>
                                             <IconCloseFilters>X</IconCloseFilters>
                                         </CloseFilters> 
@@ -616,7 +654,7 @@ const ProductResearch = () => {
                                     <FilterInside>
                                         <FilterName>Прикажани производи</FilterName> 
         
-                                        <PriceRange>
+                                        <PriceRange className="m-ldp---d-d-d-">
                                             <PriceRangeInsideMin>
                                                 <MinPrice>Избери број на резултати</MinPrice>
                                             </PriceRangeInsideMin> 
@@ -654,7 +692,7 @@ const ProductResearch = () => {
                                 </FilterMain>
                                 <FilterMain> 
         
-                                    <FilterInside>
+                                    <FilterInside className="mobile-0x4212">
                                         <FilterName>Цена</FilterName>
                                         <PriceRange>
                                             <PriceRangeInsideMin>
@@ -730,32 +768,32 @@ const ProductResearch = () => {
                                 </ProductsLoadedInfo>
                                 {((min > 0 && max > 0) || (name !== 'all') ) ? 
                                 <FiltersChoosed>
-                                    <SingleFilterChoosed>
-                                        {min > 0 && max > 0  ? 
-                                            <SingleFilterChoosedInside>
-                                                <LabelFilterChoosed>Цена:</LabelFilterChoosed>
-                                                <SpanFilterChoosed>{min} ден. - {max} ден.</SpanFilterChoosed>
-                                                <DeleteFilter onClick={deleteFilterPriceRange}>
-                                                    <DeleteFilterIcon>X</DeleteFilterIcon>
-                                                </DeleteFilter>
-                                            </SingleFilterChoosedInside>
-                                        : <></>
-                                        } 
-                                    </SingleFilterChoosed>
+                                    {min > 0 && max > 0  ? 
+                                            <SingleFilterChoosed>
+                                                    <SingleFilterChoosedInside>
+                                                        <LabelFilterChoosed>Цена:</LabelFilterChoosed>
+                                                        <SpanFilterChoosed>{min} ден. - {max} ден.</SpanFilterChoosed>
+                                                        <DeleteFilter onClick={deleteFilterPriceRange}>
+                                                            <DeleteFilterIcon>X</DeleteFilterIcon>
+                                                        </DeleteFilter>
+                                                    </SingleFilterChoosedInside>
+                                            </SingleFilterChoosed>
+                                    : <></>
+                                    } 
 
                 
-                                    <SingleFilterChoosed>
-                                        {name !== 'all'  ? 
-                                            <SingleFilterChoosedInside>
-                                                <LabelFilterChoosed>Клучни зборови:</LabelFilterChoosed>
-                                                <SpanFilterChoosed>{name}</SpanFilterChoosed>
-                                                <DeleteFilter onClick={deleteFilterSearch}>
-                                                    <DeleteFilterIcon>X</DeleteFilterIcon>
-                                                </DeleteFilter>
-                                            </SingleFilterChoosedInside>
-                                        : <></>
-                                        } 
-                                    </SingleFilterChoosed>
+                                    {name !== 'all'  ? 
+                                        <SingleFilterChoosed>
+                                                <SingleFilterChoosedInside>
+                                                    <LabelFilterChoosed>Клучни зборови:</LabelFilterChoosed>
+                                                    <SpanFilterChoosed>{name}</SpanFilterChoosed>
+                                                    <DeleteFilter onClick={deleteFilterSearch}>
+                                                        <DeleteFilterIcon>X</DeleteFilterIcon>
+                                                    </DeleteFilter>
+                                                </SingleFilterChoosedInside>
+                                        </SingleFilterChoosed>
+                                    : <></>
+                                    } 
                                 </FiltersChoosed>
                                 :<></>
                                 }

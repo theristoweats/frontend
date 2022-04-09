@@ -101,7 +101,7 @@ body{
 
 .d-lep-pela{
     display: flex !important;
-    flex-direction: column;
+    flex-direction: column; 
 }
 
 
@@ -138,5 +138,49 @@ body{
         width:150px;
         height: 130px;
     }
+    .m-ldp---d-d-d-{
+        margin-bottom: 0px !important;
+    }
+    .mobile-0x4212{
+        padding-bottom: 20px !important;
+    }
 } 
 
+
+@media only screen and (min-width: 871px) {
+ 
+    .d--s-alldps-s{
+        width:100% !important;
+        background-color:transparent;
+        border-radius: 0px;
+    }
+
+    .f---d--s-alldps-s{
+        width:auto;
+        height:auto;
+        z-index:0;
+        background-color:transparent;
+        position:relative;
+        top:auto;
+        left:auto;
+        display: block;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    
+    .d-lep-pela{
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+}
+
+
+@media only screen and (max-width: 870px) and (max-height: 620px) {
+    .d-lep-pela{ 
+        overflow-x: scroll;
+        height: 90vh;
+    }
+}

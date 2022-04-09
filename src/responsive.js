@@ -59,6 +59,15 @@ export const mobile3 = (props) => {
 }
 
 
+export const mobile10 = (props) => {
+  return css`
+  @media only screen and (max-width: 500px) {
+    ${props}
+  }
+`;
+}
+
+
 export const mobile2 = (props) => {
   return css`
   @media only screen and (max-width: 420px) {
