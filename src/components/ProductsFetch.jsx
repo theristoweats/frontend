@@ -428,7 +428,7 @@ const ProductsFetch = ({products}) => {
                         effect="blur"
                         // alt={image.alt} 
                         className="m-mldp-pdp-s-s"
-                        style={{objectFit:"contain"}}
+                        style={{objectFit:"contain", transform:`${item.transform}`}}
                         src={item.img}  />
                         <Name>{item.title}</Name>
                     </Main>
