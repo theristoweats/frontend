@@ -410,7 +410,10 @@ const ProductsFetch = ({products}) => {
     }, [buttonText])
 
     const changeText = (text) => setButtonText(text);
-
+    const transformReturn = (number) => {
+        return "scale("+number+")";
+    }
+ 
     return (
       <>
       <ProductsLoadMain>
@@ -428,7 +431,7 @@ const ProductsFetch = ({products}) => {
                         effect="blur"
                         // alt={image.alt} 
                         className="m-mldp-pdp-s-s"
-                        style={{objectFit:"contain", transform:`${item.transform}`}}
+                        style={{objectFit:"contain", transform:transformReturn(item.transform)}}
                         src={item.img}  />
                         <Name>{item.title}</Name>
                     </Main>
